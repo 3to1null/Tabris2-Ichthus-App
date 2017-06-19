@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="nathan.fraignt.me" version="0.0.1">
+  <name>IC Veenendaal</name>
+  <description>
+    Niet officiële app van het Ichthus College Veenendaal. Ondersteund Cijfers, Bestanden, Agenda, Rooster en slaat de data offline op zodat je het ook zonder internet kan inzien.
+  </description>
+  <author email="nathanklumpenaar11@gmail.com">
+    Fraignt
+  </author>
+</widget>
