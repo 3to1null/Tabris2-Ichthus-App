@@ -11,5 +11,5 @@ let textView = new TextView({
 }).appendTo(ui.contentView);
 
 button.on('select', () => {
-  textView.text = 'Tabris.js rocks!';
+  textView.text = 'Tabris.js rocks! Kinda';
 });
