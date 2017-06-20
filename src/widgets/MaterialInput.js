@@ -2,8 +2,7 @@
  * Created by Nathan on 20-6-2017.
  */
 const {Composite, TextInput, TextView} = require('tabris');
-const color__blackGrey = "rgba(0, 0, 0, 0.5)"
-
+const colors = require("../appSettings/colors");
 module.exports = class MaterialInput extends Composite{
 
     constructor (properties, label, type, font) {
@@ -17,14 +16,16 @@ module.exports = class MaterialInput extends Composite{
     _createWidget(){
         this.inputWidget = this._createInput();
         this.textLabel = this._createLabelTextView();
-        this.append(textInput, textLabel);
+        this.append(this.inputWidget, this.textLabel);
         this.inputWidget.on('focus', () => {
+            this.textLabel.set('textColor', colors.accent);
+            console.log(this.textLabel._props)
             this.textLabel.animate({
                 transform: {
-                    scaleX: 0.8,
-                    scaleY: 0.8,
+                    scaleX: 0.75,
+                    scaleY: 0.75,
                     translationY: -20,
-                    translationX: -35
+                    translationX: -38
                 }
             })
         })
@@ -34,7 +35,8 @@ module.exports = class MaterialInput extends Composite{
         return new TextInput({
             top: 5, left: 0, right: 0,
             message: "",
-            type: this.inputType
+            type: this.inputType,
+            borderColor: colors.accent
         })
     }
 
@@ -43,7 +45,7 @@ module.exports = class MaterialInput extends Composite{
             top: 15, left: 1, right: 0,
             text: this.textLabel,
             font: this.fontSize,
-            textColor: color__blackGrey
+            textColor: colors.black_grey
         })
     }
 }
