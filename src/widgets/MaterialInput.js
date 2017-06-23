@@ -3,17 +3,18 @@
  */
 const {Composite, TextInput, TextView} = require('tabris');
 const colors = require("../appSettings/colors");
-module.exports = class MaterialInput extends Composite{
+module.exports = class MaterialInput extends Composite {
 
-    constructor (properties, label, type, font) {
+    constructor(properties, label, type, font) {
         super(Object.assign({}, properties));
+        this._properties = properties;
         this.textLabel = label;
         this.inputType = type || 'default';
         this.fontSize = font || '17px';
         this._createWidget()
     }
 
-    _createWidget(){
+    _createWidget() {
         this.inputWidget = this._createInput();
         this.textLabel = this._createLabelTextView();
         this.append(this.inputWidget, this.textLabel);
@@ -31,16 +32,17 @@ module.exports = class MaterialInput extends Composite{
         })
     }
 
-    _createInput(){
+    _createInput() {
         return new TextInput({
             top: 5, left: 0, right: 0,
             message: "",
             type: this.inputType,
             borderColor: colors.accent
         })
+
     }
 
-    _createLabelTextView(){
+    _createLabelTextView() {
         return new TextView({
             top: 15, left: 1, right: 0,
             text: this.textLabel,
