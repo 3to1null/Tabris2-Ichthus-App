@@ -8,6 +8,20 @@
     <author email="nathanklumpenaar11@gmail.com">
         Fraignt
     </author>
+    <resource-file src="theme.xml" target="res/values/theme.xml" />
+
     <preference name="EnableDeveloperConsole" value="true"/>
     <preference name="UseStrictSSL" value="false"/>
+    <preference name="Theme" value="@style/theme.AppTheme" />
+
+    <platform name="android">
+        <icon src="drawable-mdpi/ic_launcher.png" density="mdpi" />
+        <icon src="drawable-hdpi/ic_launcher.png" density="hdpi" />
+        <icon src="drawable-xhdpi/ic_launcher.png" density="xhdpi" />
+        <icon src="drawable-xxhdpi/ic_launcher.png" density="xxhdpi" />
+        <icon src="drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+    </platform>
+
+    <plugin name="tabris-plugin-firebase" spec="https://github.com/eclipsesource/tabris-plugin-firebase.git" />
+    
 </widget>
