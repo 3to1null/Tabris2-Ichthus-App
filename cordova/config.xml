@@ -21,6 +21,8 @@
         <icon src="drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
     </platform>
 
+    <hook type="after_platform_add" src="copyAndroidRes.js" />
+
     <plugin name="tabris-plugin-firebase" spec="https://github.com/eclipsesource/tabris-plugin-firebase.git" />
 
 </widget>
