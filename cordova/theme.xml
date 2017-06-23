@@ -1,7 +1,0 @@
-<resources>
-    <style name="AppTheme" parent="Theme.Material">
-        <item name="colorPrimary">#3F51B5</item>
-        <item name="colorPrimaryDark">#3949AB</item>
-        <item name="colorAccent">#009688</item>
-    </style>
-</resources>
