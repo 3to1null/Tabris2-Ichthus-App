@@ -1,7 +1,7 @@
 /**
  * Created by Nathan on 19-6-2017.
  */
-const {ProgressBar, Page, ui, Composite, TextView} = require('tabris');
+const {Page, ui, Composite, TextView} = require('tabris');
 const MaterialInput = require('../widgets/MaterialInput');
 const BigToolbar = require('../widgets/BigToolbar');
 const FlatButton = require('../widgets/FlatButton');
@@ -77,7 +77,13 @@ module.exports = class LoginPage extends Page {
         let password = this._passwordInputWidget.textInput;
         let data = {userCode: userCode, password: password};
         this._checkCredentials(data)
-            .then(json => console.log(json))
+            .then((json) => {
+                //uses keys defined in localStorageKeys.txt
+                localStorage.setItem('__sessionID', json.sessionID);
+                localStorage.setItem('__key', json.key);
+                localStorage.setItem('isLoggedIn', 'true');
+                this.dispose();
+            })
             .catch((error) => {
                 console.log(error);
                 this._loginButton.once('tap', () => {

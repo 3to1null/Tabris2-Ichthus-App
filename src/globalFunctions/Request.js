@@ -26,6 +26,7 @@ module.exports = class Request {
     }
 
     _createRequestBody(params) {
+        //TODO: add standard params like __key and __sessionID
         let data = Object.entries(params);
         data = data.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`);
         let query = data.join('&');
