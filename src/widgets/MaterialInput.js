@@ -50,4 +50,8 @@ module.exports = class MaterialInput extends Composite {
             textColor: colors.black_grey
         })
     }
-}
+
+    get textInput(){
+        return this.inputWidget.get('text');
+    }
+};

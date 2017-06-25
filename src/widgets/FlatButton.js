@@ -3,7 +3,6 @@
  */
 const {Composite, TextView} = require('tabris');
 colors = require('../appSettings/colors');
-
 module.exports = class FlatButton extends Composite {
 
     //highlightColor is used on android versions < 6.0
@@ -14,8 +13,8 @@ module.exports = class FlatButton extends Composite {
         this._highlightColor = highlightColor || colors.divider_2;
         this._textAlignment = alignment || "center";
         this._highlightOnTouch = (device.version >= 23);
+        this.set('highlightOnTouch', this._highlightOnTouch);
         this._createButton();
-
     }
 
     _createButton() {
@@ -28,7 +27,6 @@ module.exports = class FlatButton extends Composite {
         this._textComposite = new Composite({
             top: 0, right: 0, left: 0, bottom: 0,
             background: this._properties.background || colors.accent,
-            highlightOnTouch: this._highlightOnTouch,
         }).appendTo(this)
         this._textView = new TextView({
             top: 0, right: 36, left: 36, bottom: 0,
@@ -49,6 +47,7 @@ module.exports = class FlatButton extends Composite {
                 this._textComposite.animate({opacity: 1}, {duration: 200, easing: "ease-in"});
             });
         }
+
     }
 
     get text() {

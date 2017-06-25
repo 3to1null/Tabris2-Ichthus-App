@@ -1,3 +1,5 @@
+firebase.Analytics.analyticsCollectionEnabled = true;
+
 const {Button, NavigationView, ui} = require('tabris');
 const LoginPage = require('./loginComponent/loginPage');
 const colors = require('./appSettings/colors')
