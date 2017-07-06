@@ -1,7 +1,7 @@
 /**
  * Created by Nathan on 19-6-2017.
  */
-const {Page, ui, Composite, TextView} = require('tabris');
+const {Page, ui, Composite} = require('tabris');
 const MaterialInput = require('../widgets/MaterialInput');
 const BigToolbar = require('../widgets/BigToolbar');
 const FlatButton = require('../widgets/FlatButton');
@@ -10,7 +10,7 @@ const colors = require('../appSettings/colors');
 
 const Request = require('../globalFunctions/Request');
 
-const toolbarHeight = '170'
+const toolbarHeight = '170';
 const pageTitle = 'Inloggen';
 const usernameInputLabel = 'Leerlingnummer';
 const passwordInputLabel = 'Wachtwoord';
@@ -22,7 +22,7 @@ module.exports = class LoginPage extends Page {
     constructor(properties) {
         super(Object.assign({title: pageTitle}, properties));
         this._rootNavigationView = ui.contentView.find('#rootNavigationView');
-        this._createLoginUI()
+        this._createLoginUI();
         this._createInputSegment();
         this._logPage();
     }
@@ -43,14 +43,11 @@ module.exports = class LoginPage extends Page {
         this._loginButton = new FlatButton(
             {
                 bottom: 0, height: 50, right: 0, left: 0,
-                background: colors.white_grey_bg, font: '19px', textColor: colors.UI_bg
+                background: colors.white_grey_bg, font: '19px', textColor: colors.UI_bg,
+                id: "loginButton"
             },
             'Inloggen', colors.black_grey, "right"
-        ).appendTo(this)
-        this._loginButton.once('tap', () => {
-            this._login()
-            firebase.Analytics.logEvent('login_button', {screen: 'loginScreen', button: 'loginButton', action: 'tap'})
-        })
+        ).appendTo(this);
     }
 
     //loginSegment will be added to 'container'
@@ -71,50 +68,5 @@ module.exports = class LoginPage extends Page {
         ).appendTo(this._inputContainer);
     }
 
-    _login() {
-        let PB = new IndeterminateProgressBar({left: 0, right:0, top: 0, height: 4}).appendTo(this._inputContainer);
-        let userCode = this._usernameInputWidget.textInput;
-        let password = this._passwordInputWidget.textInput;
-        let data = {userCode: userCode, password: password};
-        this._checkCredentials(data)
-            .then((json) => {
-                //uses keys defined in localStorageKeys.txt
-                localStorage.setItem('__sessionID', json.sessionID);
-                localStorage.setItem('__key', json.key);
-                localStorage.setItem('isLoggedIn', 'true');
-                this.dispose();
-            })
-            .catch((error) => {
-                console.log(error);
-                this._loginButton.once('tap', () => {
-                    firebase.Analytics.logEvent('login_button', {screen: 'loginScreen', button: 'loginButton', action: 'tap'});
-                    this._login();
-                })
-                PB.dispose()
-            })
-    }
 
-    _checkCredentials(credentials){
-        firebase.Analytics.logEvent('login_credentials_checking', {screen: 'loginScreen'});
-        return new Promise((resolve, reject) => {
-            new Request('login', credentials).post()
-                //This syntax should be improved
-                .then(((response) => {response.json()
-                    .then(((json) => {
-                        if (json.password !== "false") {
-                            //Resolves the promise
-                            firebase.Analytics.logEvent('login_credentials_checked', {screen: 'loginScreen', credentials: 'true'});
-                            resolve(json)
-                        } else {
-                            reject(Error(incorrectCredentialsMessage))
-                            firebase.Analytics.logEvent('login_credentials_checked', {screen: 'loginScreen', credentials: 'false'});
-                        }
-                    }))
-                }), (error) => {
-                    //error in fetch()
-                    firebase.Analytics.logEvent('login_credentials_noConnection', {screen: 'loginScreen'});
-                    reject(Error(noConnectionMessage))
-                })
-        })
-    }
-}
+};

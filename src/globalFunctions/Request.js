@@ -1,7 +1,7 @@
 /**
  * Created by Nathan on 23-6-2017.
  */
-const baseURL = "http://192.168.2.4:8000/ichthus/"
+const baseURL = "http://192.168.2.4:8000/ichthus/";
 module.exports = class Request {
     constructor(urlPath, data, headers, baseURLSpecial) {
         if (baseURLSpecial) {
@@ -17,7 +17,7 @@ module.exports = class Request {
     }
 
     post(){
-        console.log(this._url)
+        console.log(this._url);
         return fetch(this._url, {
             method: 'post',
             headers: this._headers,

@@ -8,8 +8,10 @@ const FlatButton = require('../widgets/FlatButton');
 const IndeterminateProgressBar = require('../widgets/IndeterminateProgressBar');
 const colors = require('../appSettings/colors');
 
+const pageTitle = "test";
+
 module.exports = class RoosterPage extends Page {
-    constructor() {
+    constructor(properties) {
         super(Object.assign({title: pageTitle}, properties));
         this._rootNavigationView = ui.contentView.find('#rootNavigationView');
         this._renderSchedule();

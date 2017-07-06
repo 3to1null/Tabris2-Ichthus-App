@@ -27,7 +27,7 @@ module.exports = class FlatButton extends Composite {
         this._textComposite = new Composite({
             top: 0, right: 0, left: 0, bottom: 0,
             background: this._properties.background || colors.accent,
-        }).appendTo(this)
+        }).appendTo(this);
         this._textView = new TextView({
             top: 0, right: 36, left: 36, bottom: 0,
             maxLines: 1,
@@ -35,7 +35,7 @@ module.exports = class FlatButton extends Composite {
             alignment: this._textAlignment,
             textColor: this._properties.textColor || colors.white_bg,
             text: this._text
-        }).appendTo(this._textComposite)
+        }).appendTo(this._textComposite);
         if (device.version < 23) {
             this.on("touchStart", () => {
                 this._textComposite.animate({opacity: 0.5}, {duration: 150, easing: "ease-out"});
@@ -57,4 +57,4 @@ module.exports = class FlatButton extends Composite {
     set text(value) {
         this._text = value;
     }
-}
+};

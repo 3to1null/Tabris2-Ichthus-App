@@ -20,7 +20,7 @@ module.exports = class MaterialInput extends Composite {
         this.append(this.inputWidget, this.textLabel);
         this.inputWidget.on('focus', () => {
             this.textLabel.set('textColor', colors.accent);
-            console.log(this.textLabel._props)
+            console.log(this.textLabel._props);
             this.textLabel.animate({
                 transform: {
                     scaleX: 0.75,

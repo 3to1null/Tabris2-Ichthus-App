@@ -37,4 +37,4 @@ module.exports = class BigToolbar extends Composite {
         this._submitButton = new Composite
     }
 
-}
+};

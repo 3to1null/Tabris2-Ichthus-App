@@ -1,7 +1,8 @@
 firebase.Analytics.analyticsCollectionEnabled = true;
 
 const {Button, NavigationView, ui} = require('tabris');
-const LoginPage = require('./loginComponent/loginPage');
+const handleLogin = require('./loginComponent/handleLogin');
+const RoosterPage = require('./roosterComponent/roosterPage');
 const colors = require('./appSettings/colors');
 
 const isLoggedIn = require('./globalFunctions/isLoggedIn');
@@ -18,21 +19,18 @@ let rootNavigationView = new NavigationView({
     id: 'rootNavigationView'
 }).appendTo(ui.contentView);
 
+const bootstrapApp = () => {
+    let roosterPage = new RoosterPage().appendTo(rootNavigationView);
+    console.log(rootNavigationView)
+};
+
 if(isLoggedIn()){
     bootstrapApp()
 }else{
-    let loginPage = new LoginPage().appendTo(rootNavigationView);
-    loginPage.on('dispose', () =>{
-        bootstrapApp();
-        delete loginPage
-    })
-
+    handleLogin(rootNavigationView).then().catch((error) => {console.log(error)})
 }
 
-let bootstrapApp = () => {
-    
-};
 
-firebase.Messaging.on('message',
-    ({data}) => console.log(JSON.stringify(data))
-);
+
+
+

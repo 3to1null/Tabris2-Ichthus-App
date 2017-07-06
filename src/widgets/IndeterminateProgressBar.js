@@ -3,7 +3,7 @@
  */
 const {Composite} = require('tabris');
 const colors = require('../appSettings/colors');
-const delay = 20
+const delay = 20;
 
 module.exports = class IndeterminateProgressBar extends Composite {
 
@@ -32,4 +32,4 @@ module.exports = class IndeterminateProgressBar extends Composite {
         )
     }
 
-}
+};
