@@ -1,12 +1,13 @@
 firebase.Analytics.analyticsCollectionEnabled = true;
 
 const {Button, NavigationView, ui} = require('tabris');
-const handleLogin = require('./loginComponent/handleLogin');
+const handleLogin = require('./loginComponent/loginPage');
 const RoosterPage = require('./roosterComponent/roosterPage');
 const colors = require('./appSettings/colors');
 
 const isLoggedIn = require('./globalFunctions/isLoggedIn');
 
+//sets basics UI settings that should be visible before anything else (theme, statusbar, etc.)
 let setUIelements = () => {
     ui.statusBar.set('background', colors.UI_bg_light)
 };
@@ -19,6 +20,7 @@ let rootNavigationView = new NavigationView({
     id: 'rootNavigationView'
 }).appendTo(ui.contentView);
 
+//bootstraps the complete application with the exception of the login screen.
 const bootstrapApp = () => {
     let roosterPage = new RoosterPage().appendTo(rootNavigationView);
     console.log(rootNavigationView)
@@ -27,7 +29,12 @@ const bootstrapApp = () => {
 if(isLoggedIn()){
     bootstrapApp()
 }else{
-    handleLogin(rootNavigationView).then().catch((error) => {console.log(error)})
+    handleLogin(rootNavigationView).then(() => {
+        bootstrapApp()
+    }).catch((error) => {
+        //this shouldn't get called, in case this does get called something's wrong with the login procedure.
+        console.log(error)
+    })
 }
 
 

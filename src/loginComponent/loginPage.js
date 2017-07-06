@@ -1,7 +1,7 @@
 /**
  * Created by Nathan on 19-6-2017.
  */
-const {Page, ui, Composite} = require('tabris');
+const {Page, ui, Composite, TextView} = require('tabris');
 const MaterialInput = require('../widgets/MaterialInput');
 const BigToolbar = require('../widgets/BigToolbar');
 const FlatButton = require('../widgets/FlatButton');
@@ -10,15 +10,16 @@ const colors = require('../appSettings/colors');
 
 const Request = require('../globalFunctions/Request');
 
-const toolbarHeight = '170';
+const toolbarHeight = '170'
 const pageTitle = 'Inloggen';
 const usernameInputLabel = 'Leerlingnummer';
 const passwordInputLabel = 'Wachtwoord';
 const incorrectCredentialsMessage = "Leerlingnummer of wachtwoord is incorrect";
 const noConnectionMessage = "Er kan geen verbinding gemaakt worden";
 
-module.exports = class LoginPage extends Page {
+class LoginPage extends Page {
 
+    //controls and constructs loginPage.
     constructor(properties) {
         super(Object.assign({title: pageTitle}, properties));
         this._rootNavigationView = ui.contentView.find('#rootNavigationView');
@@ -27,11 +28,13 @@ module.exports = class LoginPage extends Page {
         this._logPage();
     }
 
+    //logs opening of loginPage and sets screenName.
     _logPage(){
         firebase.Analytics.screenName = "loginScreen";
         firebase.Analytics.logEvent('loginpage_opened', {screen: 'loginScreen'})
     }
 
+    //controls the generation of loginPage's UI. 
     _createLoginUI() {
         this._rootNavigationView.set('toolbarVisible', false);
         new BigToolbar({
@@ -43,14 +46,16 @@ module.exports = class LoginPage extends Page {
         this._loginButton = new FlatButton(
             {
                 bottom: 0, height: 50, right: 0, left: 0,
-                background: colors.white_grey_bg, font: '19px', textColor: colors.UI_bg,
-                id: "loginButton"
+                background: colors.white_grey_bg,
+                font: '19px',
+                textColor: colors.UI_bg,
+                id: 'loginButton'
             },
             'Inloggen', colors.black_grey, "right"
-        ).appendTo(this);
+        ).appendTo(this)
     }
 
-    //loginSegment will be added to 'container'
+    //generates inputs that will be added to page
     _createInputSegment() {
         this._inputContainer = new Composite({
             bottom: 50, top: toolbarHeight, left: 0, right: 0,
@@ -68,5 +73,72 @@ module.exports = class LoginPage extends Page {
         ).appendTo(this._inputContainer);
     }
 
+    //called on button tap, controls the login process.
+    _login() {
+        return new Promise((resolve, reject) => {
+            let PB = new IndeterminateProgressBar({left: 0, right:0, top: 0, height: 4}).appendTo(this._inputContainer);
+            let userCode = this._usernameInputWidget.textInput;
+            let password = this._passwordInputWidget.textInput;
+            let data = {userCode: userCode, password: password};
+            this._checkCredentials(data)
+                .then((json) => {
+                    //uses keys defined in localStorageKeys.txt
+                    localStorage.setItem('__sessionID', json.sessionID);
+                    localStorage.setItem('__key', json.key);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    resolve()
+                })
+                .catch((error) => {
+                    console.log(error);
+                    PB.dispose();
+                    reject()
+                })
+        });
+    }
 
+    //called in _login(), sends post request to API.
+    _checkCredentials(credentials){
+        firebase.Analytics.logEvent('login_credentials_checking', {screen: 'loginScreen'});
+        return new Promise((resolve, reject) => {
+            new Request('login', credentials).post()
+                //This syntax should be improved
+                .then(((response) => {response.json()
+                    .then(((json) => {
+                        if (json.password !== "false") {
+                            //Resolves the promise
+                            firebase.Analytics.logEvent('login_credentials_checked', {screen: 'loginScreen', credentials: 'true'});
+                            resolve(json)
+                        } else {
+                            reject(Error(incorrectCredentialsMessage));
+                            firebase.Analytics.logEvent('login_credentials_checked', {screen: 'loginScreen', credentials: 'false'});
+                        }
+                    }))
+                }), (error) => {
+                    //error in fetch()
+                    firebase.Analytics.logEvent('login_credentials_noConnection', {screen: 'loginScreen'});
+                    reject(Error(noConnectionMessage))
+                })
+        })
+    }
+}
+
+module.exports = function (rootNavigationView) {
+    return new Promise((resolve, reject) => {
+        const loginPage = new LoginPage().appendTo(rootNavigationView);
+        let loginButton = loginPage.find('#loginButton');
+        loginButton.once('tap', () => {
+            console.log('tap')
+            finalLogin()
+        });
+        let finalLogin = () => {
+            loginButton.once('tap', () => {
+                loginPage._login().then(() => {
+                    resolve()
+                }).catch((error) => {
+                    finalLogin()
+                });
+                firebase.Analytics.logEvent('login_button', {screen: 'loginScreen', button: 'loginButton', action: 'tap'})
+            })
+        };
+    });
 };
