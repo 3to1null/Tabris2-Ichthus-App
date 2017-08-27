@@ -3,7 +3,7 @@
  */
 const baseURL = "http://192.168.2.4:8000/ichthus/";
 module.exports = class Request {
-    constructor(urlPath, data, headers, baseURLSpecial) {
+    constructor(urlPath, data, headers, baseURLSpecial, requestTimeout) {
         if (baseURLSpecial) {
             this._url = baseURLSpecial + urlPath;
         } else {
@@ -13,20 +13,35 @@ module.exports = class Request {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             };
         this._body = this._createRequestBody(data);
+        this._timeout = requestTimeout || 0;
 
     }
 
     post(){
-        console.log(this._url);
         return fetch(this._url, {
             method: 'post',
             headers: this._headers,
-            body: this._body
+            body: this._body,
+            timeout: this._timeout
+        })
+    }
+
+    get(){
+        let getUrl = this._url + '?' + this._body;
+        return fetch(getUrl, {
+            method: 'get',
+            headers: this._headers,
+            timeout: this._timeout
         })
     }
 
     _createRequestBody(params) {
-        //TODO: add standard params like __key and __sessionID
+        if(!params){
+            params = {}
+        }
+        params['__key'] = localStorage.getItem('__key');
+        params['__sessionID'] = localStorage.getItem('__sessionID');
+        params['__userCode'] = localStorage.getItem('__userCode');
         let data = Object.entries(params);
         data = data.map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`);
         let query = data.join('&');

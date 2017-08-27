@@ -3,6 +3,8 @@
  */
 let colors = {
     "transparant": "rgba(0,0,0,0)",
+    "pure_black": "#000",
+    "toast_black": "#323232",
     "black": "rgba(0, 0, 0, 0.87)",
     "light_black": "rgba(0, 0, 0, 0.54)",
     "white_bg": "#FAFAFA",

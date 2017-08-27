@@ -9,6 +9,7 @@ const IndeterminateProgressBar = require('../widgets/IndeterminateProgressBar');
 const colors = require('../appSettings/colors');
 
 const Request = require('../globalFunctions/Request');
+const showToast = require('../globalFunctions/showToast');
 
 const toolbarHeight = '170'
 const pageTitle = 'Inloggen';
@@ -21,7 +22,7 @@ class LoginPage extends Page {
 
     //controls and constructs loginPage.
     constructor(properties) {
-        super(Object.assign({title: pageTitle}, properties));
+        super(Object.assign({title: pageTitle, id: '#loginPage'}, properties));
         this._rootNavigationView = ui.contentView.find('#rootNavigationView');
         this._createLoginUI();
         this._createInputSegment();
@@ -85,13 +86,14 @@ class LoginPage extends Page {
                     //uses keys defined in localStorageKeys.txt
                     localStorage.setItem('__sessionID', json.sessionID);
                     localStorage.setItem('__key', json.key);
+                    localStorage.setItem('__userCode', userCode);
                     localStorage.setItem('isLoggedIn', 'true');
                     resolve()
                 })
                 .catch((error) => {
                     console.log(error);
                     PB.dispose();
-                    reject()
+                    reject(error)
                 })
         });
     }
@@ -122,23 +124,24 @@ class LoginPage extends Page {
     }
 }
 
-module.exports = function (rootNavigationView) {
+module.exports = (rootNavigationView) => {
     return new Promise((resolve, reject) => {
         const loginPage = new LoginPage().appendTo(rootNavigationView);
         let loginButton = loginPage.find('#loginButton');
+        const finalLogin = () => {
+            loginPage._login().then(() => {
+                //resets default toolbar
+                resolve()
+            }).catch((error) => {
+                showToast(String(error).substring(7));
+                loginButton.once('tap', () => {
+                    finalLogin();
+                })
+            });
+            firebase.Analytics.logEvent('login_button', {screen: 'loginScreen', button: 'loginButton', action: 'tap'})
+        };
         loginButton.once('tap', () => {
-            console.log('tap')
             finalLogin()
         });
-        let finalLogin = () => {
-            loginButton.once('tap', () => {
-                loginPage._login().then(() => {
-                    resolve()
-                }).catch((error) => {
-                    finalLogin()
-                });
-                firebase.Analytics.logEvent('login_button', {screen: 'loginScreen', button: 'loginButton', action: 'tap'})
-            })
-        };
     });
 };
