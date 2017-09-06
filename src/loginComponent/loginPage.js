@@ -35,7 +35,7 @@ class LoginPage extends Page {
         firebase.Analytics.logEvent('loginpage_opened', {screen: 'loginScreen'})
     }
 
-    //controls the generation of loginPage's UI. 
+    //controls the generation of loginPage's UI.
     _createLoginUI() {
         this._rootNavigationView.set('toolbarVisible', false);
         new BigToolbar({
@@ -87,6 +87,7 @@ class LoginPage extends Page {
                     localStorage.setItem('__sessionID', json.sessionID);
                     localStorage.setItem('__key', json.key);
                     localStorage.setItem('__userCode', userCode);
+                    localStorage.setItem('__userName', json.userName);
                     localStorage.setItem('isLoggedIn', 'true');
                     resolve()
                 })
