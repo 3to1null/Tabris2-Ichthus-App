@@ -3,7 +3,7 @@
  */
 //TODO: add settings for cellContainer (show klas, teacher)
 //TODO: add settings for collectionView (show days)
-const {Tab, Page, ui, Button, Composite, TextView, TabFolder, CollectionView, SearchAction} = require('tabris');
+const {Tab, Page, ui, Button, Composite, TextView, TabFolder, CollectionView, SearchAction, Action} = require('tabris');
 const MaterialInput = require('../widgets/MaterialInput');
 const BigToolbar = require('../widgets/BigToolbar');
 const FlatButton = require('../widgets/FlatButton');
@@ -12,6 +12,8 @@ const colors = require('../appSettings/colors');
 const getSchedule = require('./getSchedule');
 const getWeekNumber = require('../globalFunctions/getWeekNumber');
 const Request = require('../globalFunctions/Request');
+const showToast = require('../globalFunctions/showToast');
+const appointmentDetailsPage = require('./appointmentDetailsPage');
 
 const initialPageTitle = 'Rooster';
 
@@ -19,27 +21,46 @@ class RoosterPage extends Page {
   constructor(properties) {
     super(Object.assign({title: localStorage.getItem('__userName')}, properties));
     this._rootNavigationView = ui.contentView.find('#rootNavigationView');
+    this._createActions();
     this._renderTabFolder();
     this._tabsLoaded = [];
     this._scheduleCollectionList = {};
     this.progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this);
     this._createSearchAction();
+    firebase.Analytics.logEvent('get_schedule', {screen: 'scheduleScreen'})
     getSchedule().then((json) => {
       this.progessBar.dispose();
       this._generateTabs(json);
       this.tabFolder.selection = this.tabFolder.find('#weekTab1')[0];
+      firebase.Analytics.logEvent(`schedule_tab1_opened`, {screen: 'scheduleScreen'});
       this._renderSchedule(json[this.tabFolder.selection.id.substr(-1)], this.tabFolder.selection.id.substr(-1));
       this._tabsLoaded.push(this.tabFolder.selection.id.substr(-1));
       this.tabFolder.on('selectionChanged', (data) => {
+        firebase.Analytics.logEvent(`schedule_tab${data.value.id.substr(-1)}_opened`, {screen: 'scheduleScreen'});
         if (!(this._tabsLoaded.includes(data.value.id.substr(-1)))) {
           this._renderSchedule(json[data.value.id.substr(-1)], data.value.id.substr(-1));
           this._tabsLoaded.push(String(data.value.id.substr(-1)));
         }
       });
+      firebase.Analytics.logEvent('schedule_rendered', {screen: 'scheduleScreen'})
     }).catch((error) => console.log(error));
   }
 
+  _logPage(){
+    firebase.Analytics.screenName = "scheduleScreen";
+    firebase.Analytics.logEvent('schedulepage_opened', {screen: 'scheduleScreen'});
+  }
+
+  //render schedule after search result.
   _renderNextSchedule(userObject) {
+    if(userObject.userCode === '~me'){
+      firebase.Analytics.logEvent('get_schedule', {screen: 'scheduleScreen'});
+    }else if(userObject.userCode === localStorage.getItem('__userCode')){
+      firebase.Analytics.logEvent('get_schedule_own_via_search', {screen: 'scheduleScreen'});
+    }else{
+      firebase.Analytics.logEvent('get_schedule_someone_else', {screen: 'scheduleScreen'});
+    }
+    this._loadOwnScheduleAction.visible = false;
     this.tabFolder.dispose();
     this.title = userObject.name;
     this._tabsLoaded = [];
@@ -47,18 +68,36 @@ class RoosterPage extends Page {
     this._renderTabFolder();
     this.progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this);
     getSchedule(userObject.userCode).then((json) => {
+      if(userObject.userCode === '~me'){
+        this._loadOwnScheduleAction.image = {
+          src: 'src/img/ic_refresh_white_24dp_2x.png',
+          scale: 2
+        }
+      }else{
+        this._loadOwnScheduleAction.image = {
+          src: 'src/img/ic_person_white_24dp_2x.png',
+          scale: 2
+        }
+      }
+      this._loadOwnScheduleAction.visible = true;
       this.progessBar.detach();
       this._generateTabs(json);
       this.tabFolder.selection = this.tabFolder.find('#weekTab1')[0];
+      firebase.Analytics.logEvent(`schedule_tab1_opened`, {screen: 'scheduleScreen'});
       this._renderSchedule(json[this.tabFolder.selection.id.substr(-1)], this.tabFolder.selection.id.substr(-1));
       this._tabsLoaded.push(this.tabFolder.selection.id.substr(-1));
       this.tabFolder.on('selectionChanged', (data) => {
+        firebase.Analytics.logEvent(`schedule_tab${data.value.id.substr(-1)}_opened`, {screen: 'scheduleScreen'});
         if (!(this._tabsLoaded.includes(data.value.id.substr(-1)))) {
           this._renderSchedule(json[data.value.id.substr(-1)], data.value.id.substr(-1));
           this._tabsLoaded.push(String(data.value.id.substr(-1)));
         }
       });
-    }).catch((error) => console.log(error));
+      firebase.Analytics.logEvent('schedule_rendered', {screen: 'scheduleScreen'})
+    }).catch((error) => {
+      showToast('Er kon geen verbinding gemaakt worden met de server en er is geen offline rooster beschikbaar. We gaan het opnieuw Proberen!');
+      this._renderNextSchedule(userObject)
+    });
   }
 
   _parseSearchResult(name) {
@@ -71,13 +110,11 @@ class RoosterPage extends Page {
         offlineProposalsObjects.unshift(userObject);
       }
       this._renderNextSchedule(userObject);
-      if(offlineProposalsObjects.length > 5){
-        offlineProposalsObjects.pop[0];
-      }
       localStorage.setItem('offlineProposalsObjects', JSON.stringify(offlineProposalsObjects));
     }
   }
 
+  //gets new proposals on input in searchbar.
   _getProposals(searchQuery) {
     if (searchQuery !== '') {
       new Request('searchQuery', {q: searchQuery}, false, false, 300).get().then(((response) => {
@@ -104,18 +141,40 @@ class RoosterPage extends Page {
   _createSearchAction() {
     this.searchAction = new SearchAction({
       title: 'Zoeken',
+      placementPriority: 'high',
       image: {
         src: 'src/img/search-white-24dp@3x.png',
         scale: 3,
         message: 'Zoeken'
       }
     }).appendTo(this._rootNavigationView);
+    this.searchAction.on('select', () => firebase.Analytics.logEvent('search_opened', {screen: 'scheduleScreen'}));
     this.searchAction.on('input', ({text}) => this._getProposals(text));
     this.searchAction.on('accept', ({text}) => this._parseSearchResult(text));
     let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
     if(offlineProposalsObjects === null){offlineProposalsObjects = []}
     this.searchAction.proposals = offlineProposalsObjects.map(proposal => proposal.name);;
     this.proposals = offlineProposalsObjects;
+  }
+
+  _createActions(){
+    this._loadOwnScheduleAction = new Action({
+      title: 'Eigen rooster',
+      id: 'loadOwnScheduleAction',
+      image: {
+        src: 'src/img/ic_refresh_white_24dp_2x.png',
+        scale: 2
+      }
+    }).appendTo(this._rootNavigationView);
+    this._loadOwnScheduleAction.on('select', () => {
+      let userObject = {
+        id: '1',
+        userCode: '~me',
+        name: localStorage.getItem('__userName'),
+        isStudent: true
+      };
+      this._renderNextSchedule(userObject);
+    });
   }
 
   //renders the tab-bar and creates the tabfolder. It does create the tabs.
@@ -159,6 +218,7 @@ class RoosterPage extends Page {
     }
   }
 
+  //returns the correct background for each appointmentcell.
   _cellBackGroundGenerator(appointment, cellIndex) {
     let rowIsOdd = false;
     if (cellIndex < 5 ||
@@ -180,6 +240,7 @@ class RoosterPage extends Page {
     }
   }
 
+  //populates the appointment cell with appropriate info.
   _populateCell(appointment, index, cell) {
     let leraar = cell.find('#leraar')[0];
     let subject = cell.find('#subject')[0];
@@ -225,6 +286,8 @@ class RoosterPage extends Page {
         cell.background = this._cellBackGroundGenerator(appointment, index);
         this._populateCell(appointment, index, cell);
       }
+    }).on('select', ({index}) => {
+      appointmentDetailsPage(index, appointments[index], this._rootNavigationView)
     }).appendTo(this.tabFolder.find(`#weekTab${weekIndex}`));
   }
 

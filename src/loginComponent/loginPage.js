@@ -11,7 +11,7 @@ const colors = require('../appSettings/colors');
 const Request = require('../globalFunctions/Request');
 const showToast = require('../globalFunctions/showToast');
 
-const toolbarHeight = '170'
+const toolbarHeight = '170';
 const pageTitle = 'Inloggen';
 const usernameInputLabel = 'Leerlingnummer';
 const passwordInputLabel = 'Wachtwoord';

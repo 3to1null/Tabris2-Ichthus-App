@@ -1,6 +1,7 @@
 node_modules/
 build/
 .idea/
-*.iml
+*.sqlite3
+*.xml
 .idea/workspace.xml
 localStorageKeys.txt
