@@ -13,7 +13,8 @@ const getSchedule = require('./getSchedule');
 const getWeekNumber = require('../globalFunctions/getWeekNumber');
 const Request = require('../globalFunctions/Request');
 const showToast = require('../globalFunctions/showToast');
-const appointmentDetailsPage = require('./appointmentDetailsPage');
+// const appointmentDetailsPage = require('./appointmentDetailsPage');
+const cellBackgroundGenerator = require('../globalFunctions/appointmentCellBackgroundGenerator');
 
 const initialPageTitle = 'Rooster';
 
@@ -218,28 +219,6 @@ class RoosterPage extends Page {
     }
   }
 
-  //returns the correct background for each appointmentcell.
-  _cellBackGroundGenerator(appointment, cellIndex) {
-    let rowIsOdd = false;
-    if (cellIndex < 5 ||
-      (cellIndex >= 10 && cellIndex < 15) ||
-      (cellIndex >= 20 && cellIndex < 25) ||
-      (cellIndex >= 30 && cellIndex < 35) ||
-      (cellIndex >= 40 && cellIndex < 45)
-    ) {
-      rowIsOdd = true;
-    }
-    if (appointment === 'False' || appointment === false || appointment === 'false') {
-      return rowIsOdd ? '#b3b3b3' : '#cccccc';
-    } else if (appointment['cancelled'] === true) {
-      return rowIsOdd ? '#ff0000' : '#ff3333';
-    } else if (appointment['moved'] === true) {
-      return rowIsOdd ? '#ff9900' : '#ffad33';
-    } else {
-      return rowIsOdd ? '#ccccff' : '#e6e6ff';
-    }
-  }
-
   //populates the appointment cell with appropriate info.
   _populateCell(appointment, index, cell) {
     let leraar = cell.find('#leraar')[0];
@@ -262,6 +241,7 @@ class RoosterPage extends Page {
       class: 'scheduleCollection',
       columnCount: 5,
       itemCount: appointments.length,
+      highlightOnTouch: true,
       createCell: () => {
         let cellContainer = new Composite();
         new TextView({
@@ -283,11 +263,15 @@ class RoosterPage extends Page {
       },
       updateCell: (cell, index) => {
         let appointment = appointments[index];
-        cell.background = this._cellBackGroundGenerator(appointment, index);
+        cell.background = cellBackgroundGenerator(appointment, index);
         this._populateCell(appointment, index, cell);
       }
     }).on('select', ({index}) => {
-      appointmentDetailsPage(index, appointments[index], this._rootNavigationView)
+      //TODO: add appointmentDetailsPage
+      // if(appointments[index] !== false) {
+      //   appointmentDetailsPage(index, appointments[index], this._rootNavigationView);
+      // }
+
     }).appendTo(this.tabFolder.find(`#weekTab${weekIndex}`));
   }
 

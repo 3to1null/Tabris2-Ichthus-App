@@ -88,6 +88,7 @@ class LoginPage extends Page {
                     localStorage.setItem('__key', json.key);
                     localStorage.setItem('__userCode', userCode);
                     localStorage.setItem('__userName', json.userName);
+                    localStorage.setItem('__userGroup', json.userGroup);
                     localStorage.setItem('isLoggedIn', 'true');
                     resolve()
                 })

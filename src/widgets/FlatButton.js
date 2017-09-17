@@ -6,6 +6,7 @@ colors = require('../appSettings/colors');
 module.exports = class FlatButton extends Composite {
 
     //highlightColor is used on android versions < 6.0
+    //TODO: get all props from properties
     constructor(properties, buttonText, highlightColor, alignment) {
         super(Object.assign({}, properties));
         this._properties = properties;

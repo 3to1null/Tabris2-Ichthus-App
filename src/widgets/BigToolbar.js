@@ -3,16 +3,17 @@ const colors = require('../appSettings/colors');
 
 module.exports = class BigToolbar extends Composite {
 
-    constructor(properties, title, subTitle) {
+    constructor(properties, title, subTitle, background) {
         super(Object.assign({}, properties));
         this.title = title;
         this.subTitle = subTitle;
+        this.background = background || colors.UI_bg;
         this._createToolbar();
         this._createTitles();
     }
 
     _createToolbar() {
-        this.set('background', colors.UI_bg);
+        this.set('background', this.background);
         this.set('elevation', 4);
     }
 
@@ -33,8 +34,8 @@ module.exports = class BigToolbar extends Composite {
         }).appendTo(this);
     }
 
-    _createSubmitButton() {
-        this._submitButton = new Composite
-    }
+    // _createSubmitButton() {
+    //     this._submitButton = new Composite
+    // }
 
 };
