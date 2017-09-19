@@ -26,7 +26,7 @@ let rootNavigationView = new NavigationView({
 const bootstrapApp = (wasLoggedInOnStart=true) => {
     createRoosterPage(rootNavigationView);
     rootNavigationView.drawerActionVisible = true;
-    let appDrawer = new AppDrawer();
+    let appDrawer = new AppDrawer(rootNavigationView);
     if(!wasLoggedInOnStart){
         rootNavigationView._children[0].dispose()
     }

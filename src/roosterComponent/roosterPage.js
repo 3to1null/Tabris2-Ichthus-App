@@ -20,7 +20,7 @@ const initialPageTitle = 'Rooster';
 
 class RoosterPage extends Page {
   constructor(properties) {
-    super(Object.assign({title: localStorage.getItem('__userName')}, properties));
+    super(Object.assign({title: localStorage.getItem('__userName'), autoDispose: false}, properties));
     this._rootNavigationView = ui.contentView.find('#rootNavigationView');
     this._createActions();
     this._renderTabFolder();
