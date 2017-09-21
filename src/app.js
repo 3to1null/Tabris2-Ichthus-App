@@ -3,6 +3,7 @@ firebase.Analytics.analyticsCollectionEnabled = true;
 const {Button, NavigationView, ui} = require('tabris');
 const handleLogin = require('./loginComponent/loginPage');
 const createRoosterPage = require('./roosterComponent/roosterPage');
+const getCijfers = require('./cijferComponent/getCijfers');
 const colors = require('./appSettings/colors');
 const AppDrawer = require('./appDrawer');
 
@@ -27,6 +28,7 @@ const bootstrapApp = (wasLoggedInOnStart=true) => {
     createRoosterPage(rootNavigationView);
     rootNavigationView.drawerActionVisible = true;
     let appDrawer = new AppDrawer(rootNavigationView);
+    getCijfers();
     if(!wasLoggedInOnStart){
         rootNavigationView._children[0].dispose()
     }
@@ -40,7 +42,7 @@ if(isLoggedIn()){
         bootstrapApp(false)
     }).catch((error) => {
         //this shouldn't get called, in case it does, something's wrong with the login procedure.
-        console.log(error)
+        console.log('fuck', error)
     })
 }
 

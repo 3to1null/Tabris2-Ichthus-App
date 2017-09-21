@@ -70,11 +70,11 @@ class AppDrawer{
       updateCell: (cell, index) => {
         cell.text = this._drawerItems[index];
       }
-    }).on('select', this._onPageSelect(widget, index));
+    }).on('select', ({index}) => {this._onPageSelect(index)});
     this._pageSelectorCollection.appendTo(this._drawer)
   }
 
-  _onPageSelect(widget, index){
+  _onPageSelect(index){
     const selectedPage = this._drawerItems[index];
     if(this._activePage !== selectedPage){
       this._openPage(selectedPage)

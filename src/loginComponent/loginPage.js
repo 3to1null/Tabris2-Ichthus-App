@@ -27,6 +27,7 @@ class LoginPage extends Page {
     this._createLoginUI();
     this._createInputSegment();
     this._logPage();
+    console.log('login Constructor')
   }
 
   //logs opening of loginPage and sets screenName.
@@ -51,11 +52,12 @@ class LoginPage extends Page {
         font: '19px',
         textColor: colors.UI_bg,
         id: 'loginButton',
-        text: 'Inloggen',
         highlightColor: colors.black_grey,
         textAlignment: 'right'
       }
     ).appendTo(this);
+    //TODO: DIT MOET IN DE CONSTRUCTOR KOMEN
+    this._loginButton.text = 'Inloggen';
   }
 
   //generates inputs that will be added to page
