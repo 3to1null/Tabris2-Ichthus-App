@@ -3,6 +3,8 @@ const { Drawer, ui, Composite, TextView, CollectionView } = require('tabris');
 const FlatButton = require('./widgets/FlatButton');
 const colors = require('./appSettings/colors');
 
+const createCijferPage = require('./cijferComponent/cijferPage');
+
 const topContainerHeight = 100;
 const leftMargin = 16;
 
@@ -12,12 +14,16 @@ class AppDrawer{
     this._rootNavigationView = rootNavigationView;
     this._drawer.background = colors.white_bg;
     this.enableDrawer();
-    this._drawerItems = ['Rooster', 'Cijfers', 'Instellingen'];
+    this._drawerItems = ['Rooster', 'Cijferlijsten', 'Instellingen'];
     this._createTopContainer();
     this._createPageSelector();
     this._activePage = 'Rooster';
     this._pages = {
-      'Rooster': this._rootNavigationView._children[0]
+      'Rooster': this._rootNavigationView.pages()[0]
+    };
+
+    this._createPageFunctions = {
+      'Cijferlijsten': createCijferPage
     }
 
   }
@@ -82,14 +88,16 @@ class AppDrawer{
   }
 
   _openPage(pageToBeOpened){
-    //Creates a reference to page that was opened before
-    this._pages[this._activePage] = this._rootNavigationView._children[0];
+    this._pages[this._activePage] = this._rootNavigationView.pages()[0];
+    this._activePage = pageToBeOpened;
+    this._rootNavigationView.pages()[0].detach();
     if(pageToBeOpened in this._pages){
       this._rootNavigationView.append(this._pages[pageToBeOpened])
     }else{
-      //TODO: create the new page
+      this._createPageFunctions[pageToBeOpened](this._rootNavigationView);
     }
-    this._rootNavigationView._children[0].detach();
+    this._drawer.close();
+
   }
 
 }

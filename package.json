@@ -1,6 +1,6 @@
 {
   "name": "tabris2-ichthus-app",
-  "version": "0.0.1",
+  "version": "2.0.1",
   "main": "src/app.js",
   "private": true,
   "scripts": {
@@ -8,9 +8,9 @@
     "start": "tabris serve"
   },
   "dependencies": {
-    "tabris": "^2.0.0-rc2-dev.20170621"
+    "tabris": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "^4.0.0"
+    "eslint": "^4.7.2"
   }
 }

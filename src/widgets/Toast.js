@@ -4,7 +4,7 @@
 const {Composite, TextView} = require('tabris');
 const colors = require('../appSettings/colors');
 
-//TODO: Still need to add suport for button in toast
+//TODO: Still need to add support for button in toast
 module.exports = class Toast extends Composite {
     constructor(toastText, buttonText = false) {
         let properties = {

@@ -22,12 +22,12 @@ class RoosterPage extends Page {
   constructor(properties) {
     super(Object.assign({title: localStorage.getItem('__userName'), autoDispose: false}, properties));
     this._rootNavigationView = ui.contentView.find('#rootNavigationView');
-    this._createActions();
+
     this._renderTabFolder();
     this._tabsLoaded = [];
     this._scheduleCollectionList = {};
     this.progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this);
-    this._createSearchAction();
+
     firebase.Analytics.logEvent('get_schedule', {screen: 'scheduleScreen'})
     getSchedule().then((json) => {
       this.progessBar.dispose();
@@ -45,6 +45,15 @@ class RoosterPage extends Page {
       });
       firebase.Analytics.logEvent('schedule_rendered', {screen: 'scheduleScreen'})
     }).catch((error) => console.log(error));
+
+    this.on('appear', () => {
+      this._createActions();
+      this._createSearchAction();
+    });
+
+    this.on('disappear', () => {
+      this._disposeAllActions();
+    })
   }
 
   _logPage(){
@@ -139,10 +148,16 @@ class RoosterPage extends Page {
     }
   }
 
+  _disposeAllActions(){
+    this.searchAction.dispose();
+    this._loadOwnScheduleAction.dispose();
+  }
+
   _createSearchAction() {
     this.searchAction = new SearchAction({
       title: 'Zoeken',
       placementPriority: 'high',
+      id: 'SearchAction',
       image: {
         src: 'src/img/search-white-24dp@3x.png',
         scale: 3,
@@ -154,7 +169,7 @@ class RoosterPage extends Page {
     this.searchAction.on('accept', ({text}) => this._parseSearchResult(text));
     let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
     if(offlineProposalsObjects === null){offlineProposalsObjects = []}
-    this.searchAction.proposals = offlineProposalsObjects.map(proposal => proposal.name);;
+    this.searchAction.proposals = offlineProposalsObjects.map(proposal => proposal.name);
     this.proposals = offlineProposalsObjects;
   }
 
