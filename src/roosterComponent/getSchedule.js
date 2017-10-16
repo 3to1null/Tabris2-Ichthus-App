@@ -2,6 +2,7 @@ const Request = require('../globalFunctions/Request');
 const showToast = require('../globalFunctions/showToast');
 
 module.exports = function getSchedule(userCode="~me") {
+  console.log('GETTING THE FUCKING SCHEDULE')
   return new Promise((resolve, reject) => {
     let requestTimeout, showScheduleOldToast1Day, showScheduleOldToast2Day;
     let downloadedScheduleList = JSON.parse(localStorage.getItem('downloadedScheduleList')) || [];
