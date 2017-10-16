@@ -8,9 +8,9 @@
     "start": "tabris serve"
   },
   "dependencies": {
-    "tabris": "^2.1.0"
+    "tabris": "^2.1.1"
   },
   "devDependencies": {
-    "eslint": "^4.7.2"
+    "eslint": "^4.8.0"
   }
 }
