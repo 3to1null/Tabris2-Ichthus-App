@@ -1,156 +1,33 @@
 /**
  * Created by Nathan on 24-9-2017.
  */
-const {Page, TabFolder, Tab, CollectionView, Canvas, Composite, device, TextView} = require('tabris');
+const {Page, TabFolder, Tab} = require('tabris');
 const IndeterminateProgressBar = require('../widgets/IndeterminateProgressBar');
 const colors = require('../appSettings/colors');
 const getCijfers = require('./getCijfers');
 const initialPageTitle = 'Cijferlijsten';
-const showToast = require('../globalFunctions/showToast');
 
-const tabs = ['Periode 1', 'Periode 2', 'Periode 3', 'Examendossier'];
+const tabs = ['P1', 'P2', 'P3', 'Dossier'];
 
 class CijferPage extends Page {
   constructor(properties) {
     super(Object.assign({title: initialPageTitle, autoDispose: false}, properties));
-    this._tabList = [];
-    this._renderedTabs = [];
-    this._createTabFolder();
-    this._renderCijferlijst(0);
+    this.progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this);
+    this._createTabFolder()
   }
 
-  _createTab(tab) {
-    let tmp_tab = new Tab({
-      title: tab,
-      id: `cijferTab${tab}`,
-      background: colors.white_bg,
-    });
-    this._tabList.push(tmp_tab);
-    tmp_tab.appendTo(this.tabFolder);
-  }
-
-  _createTabFolder() {
-    this.tabFolder = new TabFolder({
-      left: 0, right: 0, top: 0, bottom: 0,
-      textColor: colors.white_bg,
-      paging: true,
-      tabMode: 'scrollable',
-      background: colors.UI_bg
-    });
-
-    for (let i = 0; i < tabs.length; i++) {
-      this._createTab(tabs[i]);
+  _createTabFolder(){
+    function createTab(tab) {
+      console.log(tab)
     }
-    this.tabFolder.on('selectionChanged', ({value: tab}) => {
-      //TODO: create system that loads next tab => app will seem smoother
-      switch(tab.id.substr(tab.id.length - 1)){
-        case 'r':
-          this._loadTab(3);
-          break;
-        default:
-          this._loadTab(parseInt(tab.id.substr(tab.id.length - 1))-1)
-      }
+    this._tabFolder = new TabFolder({
+      top: 0, left: 0, bottom: 0, right: 0,
+      background: colors.UI_bg,
+      textColor: colors.white_bg
     });
-
-    this.tabFolder.appendTo(this);
-  }
-
-  _loadTab(tabNum){
-    if(!this._renderedTabs.includes(parseInt(tabNum))){
-      this._renderCijferlijst(tabNum)
+    for(let tab in tabs){
+      createTab(tab)
     }
-  }
-
-  _createCijferCircle(canvas, cijfer, small) {
-    if (small) {
-      const scaleFactor = device.scaleFactor;
-      const canvasSizeX = 42;
-      const canvasSizeY = 50;
-      const context = canvas.getContext('2d', canvasSizeX * scaleFactor, canvasSizeY * scaleFactor);
-      context.scale(scaleFactor, scaleFactor);
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const radius = 18;
-
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      context.fillStyle = colors.accent;
-      context.fill();
-
-      context.fillStyle = colors.white_bg;
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      context.font = '18px';
-      context.fillText(cijfer, centerX, centerY)
-
-    }
-  }
-
-  //tabNum is an integer 0,1,2,3 => corresponds with index of tabfolder.
-  _renderCijferlijst(tabNum) {
-    let progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this._tabList[tabNum]);
-    this._renderedTabs.push(tabNum);
-    //tabNum + 1 == periode
-    getCijfers(tabNum + 1, true, false).then((json) => {
-      console.log(json);
-      if(parseInt(tabNum) === 3 && String(JSON.stringify(json)) === '[]'){
-        showToast('Het lijkt erop dat er nog geen cijfers in je examendossier zijn ingevuld.')
-      }
-      new CollectionView({
-        top: 0, left: 0, right: 0, bottom: 0,
-        class: 'cijferlijstCollection',
-        columnCount: 1,
-        itemCount: json.length,
-        highlightOnTouch: true,
-        cellType: (index) => {
-          return json[index].average;
-        },
-        createCell: (celltype) => {
-          let cellContainer;
-          if(device.version >= 23){
-            cellContainer = new Composite({highlightOnTouch:true});
-          }else{
-            //FUCKING HIGHLIGHT ON TOUCH SHIT BECAUSE IT DOESN'T FUCKING WORK FOR ANDROID 4!!
-            cellContainer = new Composite({}).on('touchStart', ()=>{
-              cellContainer.background = colors.white_grey_bg;
-            }).on('touchEnd', ()=>{
-              cellContainer.background = colors.transparant;
-            }).on('touchCancel', ()=>{
-              cellContainer.background = colors.transparant;
-            });
-          }
-          let canvasCijfer = new Canvas({
-            top: 0,
-            left: 12,
-            width: 42,
-            height: 50,
-          });
-          canvasCijfer.appendTo(cellContainer);
-          this._createCijferCircle(canvasCijfer, celltype, true);
-          new TextView({
-            left: 45+24,
-            right: 0,
-            centerY: 0,
-            font: '16px'
-          }).appendTo(cellContainer);
-          new Composite({
-            left: 45+24,
-            right: 0,
-            height: 1,
-            bottom: 0,
-            background: colors.white_white_grey_bg
-          }).appendTo(cellContainer);
-
-          return cellContainer
-        },
-        updateCell: (cell, index) => {
-          cell.apply({
-            TextView: {text: json[index].subject}
-          });
-        }
-      }).appendTo(this._tabList[tabNum]);
-      progessBar.dispose();
-    });
   }
 }
 
