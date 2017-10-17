@@ -1,4 +1,4 @@
-const {Page, ui, ScrollView} = require('tabris');
+const {Page, ui, ScrollView, CollectionView} = require('tabris');
 const BigToolbar = require('../widgets/BigToolbar');
 const cellBackgroundGenerator = require('../globalFunctions/appointmentCellBackgroundGenerator');
 const colors = require('../appSettings/colors');

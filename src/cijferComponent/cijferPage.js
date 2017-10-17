@@ -7,6 +7,8 @@ const colors = require('../appSettings/colors');
 const getCijfers = require('./getCijfers');
 const initialPageTitle = 'Cijferlijsten';
 const showToast = require('../globalFunctions/showToast');
+const cijferDetailsPage = require('./cijferDetailsPage');
+const createCircleIcon = require('../globalFunctions/createIconCircle');
 
 const tabs = ['Periode 1', 'Periode 2', 'Periode 3', 'Examendossier'];
 
@@ -61,31 +63,6 @@ class CijferPage extends Page {
     }
   }
 
-  _createCijferCircle(canvas, cijfer, small) {
-    if (small) {
-      const scaleFactor = device.scaleFactor;
-      const canvasSizeX = 42;
-      const canvasSizeY = 50;
-      const context = canvas.getContext('2d', canvasSizeX * scaleFactor, canvasSizeY * scaleFactor);
-      context.scale(scaleFactor, scaleFactor);
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const radius = 18;
-
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-      context.fillStyle = colors.accent;
-      context.fill();
-
-      context.fillStyle = colors.white_bg;
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      context.font = '18px';
-      context.fillText(cijfer, centerX, centerY)
-
-    }
-  }
-
   //tabNum is an integer 0,1,2,3 => corresponds with index of tabfolder.
   _renderCijferlijst(tabNum) {
     let progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this._tabList[tabNum]);
@@ -126,7 +103,7 @@ class CijferPage extends Page {
             height: 50,
           });
           canvasCijfer.appendTo(cellContainer);
-          this._createCijferCircle(canvasCijfer, celltype, true);
+          createCircleIcon(canvasCijfer, celltype, 'small');
           new TextView({
             left: 45+24,
             right: 0,
@@ -147,6 +124,13 @@ class CijferPage extends Page {
           cell.apply({
             TextView: {text: json[index].subject}
           });
+        }
+      }).on('select', ({index}) => {
+        let cijfers = json[index]
+        if(cijfers.average === '-'){
+          showToast(`Er zijn nog geen cijfers beschikbaar voor ${cijfers.subject}.`)
+        }else{
+          cijferDetailsPage(json[index])
         }
       }).appendTo(this._tabList[tabNum]);
       progessBar.dispose();
