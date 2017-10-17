@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="650f0975-a378-4b43-a65c-01890a7e6541" name="Default" comment="Added custom materialInput widget">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" afterPath="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cijferComponent/getCijfers.js" afterPath="$PROJECT_DIR$/src/cijferComponent/getCijfers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globalFunctions/showToast.js" afterPath="$PROJECT_DIR$/src/globalFunctions/showToast.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/roosterComponent/getSchedule.js" afterPath="$PROJECT_DIR$/src/roosterComponent/getSchedule.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" afterPath="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" afterPath="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" />
     </list>
     <ignored path="Tabris2-Ichthus-App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +26,7 @@
             <file leaf-file-name="roosterPage.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="300">
+                  <state relative-caret-position="17">
                     <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
                     <folding />
                   </state>
@@ -48,26 +43,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="buildAndPush.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/buildAndPush.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="134" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package-lock.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package-lock.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="appDrawer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/appDrawer.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -98,7 +73,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getCijfers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="getCijfers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cijferComponent/getCijfers.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
@@ -108,11 +83,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cijferPage.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cijferPage.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="44" column="73" lean-forward="false" selection-start-line="44" selection-start-column="73" selection-end-line="44" selection-end-column="73" />
+            <state relative-caret-position="-136">
+              <caret line="70" column="31" lean-forward="false" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createIconCircle.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/globalFunctions/createIconCircle.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cijferDetailsPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -121,18 +116,8 @@
       <file leaf-file-name="getSchedule.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/roosterComponent/getSchedule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="17">
               <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndeterminateProgressBar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/widgets/IndeterminateProgressBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -141,7 +126,7 @@
       <file leaf-file-name="FlatButton.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/widgets/FlatButton.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="844">
+            <state relative-caret-position="589">
               <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding />
             </state>
@@ -201,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/appSettings/subjects.json" />
         <option value="$PROJECT_DIR$/src/globalFunctions/appointmentCellBackgroundGenerator.js" />
         <option value="$PROJECT_DIR$/src/widgets/BigToolbar.js" />
-        <option value="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/createDrawer.js" />
         <option value="$PROJECT_DIR$/src/widgets/FlatButton.js" />
         <option value="$PROJECT_DIR$/src/loginComponent/loginPage.js" />
@@ -215,7 +199,10 @@
         <option value="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/getCijfers.js" />
         <option value="$PROJECT_DIR$/src/roosterComponent/getSchedule.js" />
+        <option value="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" />
+        <option value="$PROJECT_DIR$/src/globalFunctions/createIconCircle.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" />
+        <option value="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" />
       </list>
     </option>
   </component>
@@ -257,6 +244,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,7 +303,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -525,7 +512,8 @@
       <workItem from="1507467006810" duration="2240000" />
       <workItem from="1507469794876" duration="2250000" />
       <workItem from="1508064748586" duration="8825000" />
-      <workItem from="1508093100122" duration="4513000" />
+      <workItem from="1508093100122" duration="8752000" />
+      <workItem from="1508243944024" duration="856000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1497886535188</created>
@@ -546,9 +534,10 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="enabled" value="true" />
-    <option name="totallyTimeSpent" value="165075000" />
+    <option name="totallyTimeSpent" value="170170000" />
     <option name="suspendDelayInSeconds" value="300" />
     <option name="showClosedTasks" value="false" />
+    <option name="showSpentTimeFromLastPost" value="true" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -564,7 +553,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23720682" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23987207" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.48933902" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5085197" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27056277" sideWeight="0.510661" order="2" side_tool="true" content_ui="tabs" />
@@ -628,25 +617,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/widgets/BigToolbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -784,13 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="71" column="3" lean-forward="false" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -863,7 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="2" lean-forward="false" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,7 +838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -879,7 +845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="134" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -887,7 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -895,7 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -923,10 +886,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="43" lean-forward="false" selection-start-line="0" selection-start-column="43" selection-end-line="0" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/widgets/FlatButton.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="844">
+        <state relative-caret-position="589">
           <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/roosterComponent/getSchedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/globalFunctions/createIconCircle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="70" column="31" lean-forward="false" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -935,30 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="122" lean-forward="false" selection-start-line="5" selection-start-column="122" selection-end-line="5" selection-end-column="122" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/roosterComponent/getSchedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="44" column="73" lean-forward="false" selection-start-line="44" selection-start-column="73" selection-end-line="44" selection-end-column="73" />
           <folding />
         </state>
       </provider>
