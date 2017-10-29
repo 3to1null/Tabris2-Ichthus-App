@@ -63,13 +63,25 @@ class CijferPage extends Page {
     }
   }
 
+  // _checkIfNewMarks(newJson, oldJson){
+  //   if(newJson === oldJson){
+  //     return false
+  //   }else{
+  //     let notEqualIndexList = []
+  //     for (let vakIndex = 0; vakIndex < newJson.length; vakIndex++){
+  //       if(newJson[vakIndex] !== oldJson[vakIndex]){
+  //
+  //       }
+  //     }
+  //   }
+  // }
+
   //tabNum is an integer 0,1,2,3 => corresponds with index of tabfolder.
   _renderCijferlijst(tabNum) {
     let progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this._tabList[tabNum]);
     this._renderedTabs.push(tabNum);
     //tabNum + 1 == periode
     getCijfers(tabNum + 1, true, false).then((json) => {
-      console.log(json);
       if(parseInt(tabNum) === 3 && String(JSON.stringify(json)) === '[]'){
         showToast('Het lijkt erop dat er nog geen cijfers in je examendossier zijn ingevuld.')
       }
@@ -77,6 +89,7 @@ class CijferPage extends Page {
         top: 0, left: 0, right: 0, bottom: 0,
         class: 'cijferlijstCollection',
         columnCount: 1,
+        refreshEnabled: true,
         itemCount: json.length,
         highlightOnTouch: true,
         cellType: (index) => {
@@ -126,12 +139,28 @@ class CijferPage extends Page {
           });
         }
       }).on('select', ({index}) => {
-        let cijfers = json[index]
+        let cijfers = json[index];
         if(cijfers.average === '-'){
           showToast(`Er zijn nog geen cijfers beschikbaar voor ${cijfers.subject}.`)
         }else{
           cijferDetailsPage(json[index])
         }
+      }).on('refresh', (eventObject) => {
+          getCijfers(tabNum + 1, false, false).then((json) => {
+            const offlineCijferlijst = localStorage.getItem(`cijferlijst${String(tabNum + 1)}`);
+            if(!this._checkIfNewMarks(json, JSON.parse(offlineCijferlijst))){
+              eventObject.target.refreshIndicator = false;
+            }else{
+              console.log('anders')
+            }
+          })
+          //   if(!this._checkIfNewMarks(json, json.parse(localStorage.getItem(`cijferlijst${string(tabNum + 1)}`)))){
+          //     console.log('test');
+          //     eventObject.target.refreshIndicator = false;
+          //   }else{
+          //     console.log('test2')
+          //   }
+          // }, (err) => {console.log(err)})
       }).appendTo(this._tabList[tabNum]);
       progessBar.dispose();
     });
