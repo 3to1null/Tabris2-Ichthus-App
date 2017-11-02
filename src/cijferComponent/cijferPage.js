@@ -15,10 +15,24 @@ const tabs = ['Periode 1', 'Periode 2', 'Periode 3', 'Examendossier'];
 class CijferPage extends Page {
   constructor(properties) {
     super(Object.assign({title: initialPageTitle, autoDispose: false}, properties));
+
     this._tabList = [];
     this._renderedTabs = [];
     this._createTabFolder();
     this._renderCijferlijst(0);
+    this._renderCijferlijst(1);
+
+    this._logPage();
+
+    this.on('appear', () => {
+      this._logPage()
+    })
+  }
+
+  _logPage(){
+    firebase.Analytics.screenName = "cijferScreen";
+    firebase.Analytics.logEvent('cijferpage_opened', {screen: 'cijferScreen'});
+    firebase.Analytics.logEvent('cijfertab1_opened', {screen: 'cijferScreen'});
   }
 
   _createTab(tab) {
@@ -44,13 +58,16 @@ class CijferPage extends Page {
       this._createTab(tabs[i]);
     }
     this.tabFolder.on('selectionChanged', ({value: tab}) => {
-      //TODO: create system that loads next tab => app will seem smoother
       switch(tab.id.substr(tab.id.length - 1)){
         case 'r':
+          firebase.Analytics.logEvent('cijfertab3_opened', {screen: 'cijferScreen'});
           this._loadTab(3);
+          this._loadTab(2);
           break;
         default:
-          this._loadTab(parseInt(tab.id.substr(tab.id.length - 1))-1)
+          firebase.Analytics.logEvent(`cijfertab${String((parseInt(tab.id.substr(tab.id.length - 1))-1))}_opened`, {screen: 'cijferScreen'});
+          this._loadTab(parseInt(tab.id.substr(tab.id.length - 1))-1);
+          this._loadTab(parseInt(tab.id.substr(tab.id.length - 1)));
       }
     });
 
@@ -82,18 +99,20 @@ class CijferPage extends Page {
     this._renderedTabs.push(tabNum);
     //tabNum + 1 == periode
     getCijfers(tabNum + 1, true, false).then((json) => {
-      if(parseInt(tabNum) === 3 && String(JSON.stringify(json)) === '[]'){
+      let cijferItems;
+      cijferItems = json;
+      if(parseInt(tabNum) === 3 && String(JSON.stringify(cijferItems)) === '[]'){
         showToast('Het lijkt erop dat er nog geen cijfers in je examendossier zijn ingevuld.')
       }
-      new CollectionView({
+      let cijferlijstCollectionView = new CollectionView({
         top: 0, left: 0, right: 0, bottom: 0,
         class: 'cijferlijstCollection',
         columnCount: 1,
         refreshEnabled: true,
-        itemCount: json.length,
+        itemCount: cijferItems.length,
         highlightOnTouch: true,
         cellType: (index) => {
-          return json[index].average;
+          return cijferItems[index].average;
         },
         createCell: (celltype) => {
           let cellContainer;
@@ -135,36 +154,47 @@ class CijferPage extends Page {
         },
         updateCell: (cell, index) => {
           cell.apply({
-            TextView: {text: json[index].subject}
+            TextView: {text: cijferItems[index].subject}
           });
         }
       }).on('select', ({index}) => {
-        let cijfers = json[index];
+        let cijfers = cijferItems[index];
         if(cijfers.average === '-'){
           showToast(`Er zijn nog geen cijfers beschikbaar voor ${cijfers.subject}.`)
         }else{
-          cijferDetailsPage(json[index])
+          cijferDetailsPage(cijferItems[index])
         }
       }).on('refresh', (eventObject) => {
+        firebase.Analytics.logEvent('start_refresh_cijferlijst', {screen: 'cijferScreen'});
           getCijfers(tabNum + 1, false, false).then((json) => {
-            const offlineCijferlijst = localStorage.getItem(`cijferlijst${String(tabNum + 1)}`);
-            if(!this._checkIfNewMarks(json, JSON.parse(offlineCijferlijst))){
-              eventObject.target.refreshIndicator = false;
-            }else{
-              console.log('anders')
+            let oldCijferItems = cijferItems;
+            cijferItems = json;
+            if(cijferItems !== oldCijferItems){
+              eventObject.target.remove(0,oldCijferItems.length);
+              eventObject.target.insert(0, cijferItems.length);
             }
+            eventObject.target.refreshIndicator = false;
+
+            firebase.Analytics.logEvent('refreshed_cijferlijst', {screen: 'cijferScreen'});
           })
-          //   if(!this._checkIfNewMarks(json, json.parse(localStorage.getItem(`cijferlijst${string(tabNum + 1)}`)))){
-          //     console.log('test');
-          //     eventObject.target.refreshIndicator = false;
-          //   }else{
-          //     console.log('test2')
-          //   }
-          // }, (err) => {console.log(err)})
       }).appendTo(this._tabList[tabNum]);
       progessBar.dispose();
+
+      //downloads updated cijfers:
+      getCijfers(tabNum + 1, false, false).then((json) => {
+        let oldCijferItems = cijferItems;
+        cijferItems = json;
+        if(cijferItems !== oldCijferItems){
+          cijferlijstCollectionView.remove(0,oldCijferItems.length);
+          cijferlijstCollectionView.insert(0, cijferItems.length);
+        }
+      })
     });
+
+
+
   }
+
 }
 
 module.exports = (rootNavigationView) => {
