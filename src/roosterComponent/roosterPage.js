@@ -34,14 +34,17 @@ class RoosterPage extends Page {
       this._generateTabs(json);
       this.tabFolder.selection = this.tabFolder.find('#weekTab1')[0];
       firebase.Analytics.logEvent(`schedule_tab1_opened`, {screen: 'scheduleScreen'});
+
       this._renderSchedule(json[this.tabFolder.selection.id.substr(-1)], this.tabFolder.selection.id.substr(-1));
       this._tabsLoaded.push(this.tabFolder.selection.id.substr(-1));
+      this._renderSchedule(json[parseInt(this.tabFolder.selection.id.substr(-1)) - 1], String(parseInt(this.tabFolder.selection.id.substr(-1)) - 1));
+      this._tabsLoaded.push(String(parseInt(this.tabFolder.selection.id.substr(-1)) - 1));
+      this._renderSchedule(json[parseInt(this.tabFolder.selection.id.substr(-1)) + 1], String(parseInt(this.tabFolder.selection.id.substr(-1)) + 1));
+      this._tabsLoaded.push(String(parseInt(this.tabFolder.selection.id.substr(-1)) + 1));
+
       this.tabFolder.on('selectionChanged', (data) => {
         firebase.Analytics.logEvent(`schedule_tab${data.value.id.substr(-1)}_opened`, {screen: 'scheduleScreen'});
-        if (!(this._tabsLoaded.includes(data.value.id.substr(-1)))) {
-          this._renderSchedule(json[data.value.id.substr(-1)], data.value.id.substr(-1));
-          this._tabsLoaded.push(String(data.value.id.substr(-1)));
-        }
+        this._loadTabsOnSelectionChange(data, json)
       });
       firebase.Analytics.logEvent('schedule_rendered', {screen: 'scheduleScreen'})
     }).catch((error) => console.log(error));
@@ -49,6 +52,7 @@ class RoosterPage extends Page {
     this.on('appear', () => {
       this._createActions();
       this._createSearchAction();
+      this._logPage()
     });
 
     this.on('disappear', () => {
@@ -59,6 +63,24 @@ class RoosterPage extends Page {
   _logPage(){
     firebase.Analytics.screenName = "scheduleScreen";
     firebase.Analytics.logEvent('schedulepage_opened', {screen: 'scheduleScreen'});
+  }
+
+  _loadTabsOnSelectionChange(data, json){
+    if (!(this._tabsLoaded.includes(data.value.id.substr(-1)))) {
+      this._renderSchedule(json[data.value.id.substr(-1)], data.value.id.substr(-1));
+      this._tabsLoaded.push(String(data.value.id.substr(-1)));
+    }
+    //loads prev tab if it is not loaded: reduces visible lag
+    //TODO: this doesn't yet work with custom amounts of weeks!!
+    if (!(this._tabsLoaded.includes(String(parseInt(data.value.id.substr(-1)) - 1))) && parseInt(data.value.id.substr(-1)) - 1 >= 0) {
+      this._renderSchedule(json[String(parseInt(data.value.id.substr(-1)) - 1)], String(parseInt(data.value.id.substr(-1)) - 1));
+      this._tabsLoaded.push(String(parseInt(data.value.id.substr(-1)) - 1));
+    }
+    //loads next tab if it is not loaded: reduces visible lag
+    if (!(this._tabsLoaded.includes(String(parseInt(data.value.id.substr(-1)) + 1))) && parseInt(data.value.id.substr(-1)) + 1 <= 6) {
+      this._renderSchedule(json[String(parseInt(data.value.id.substr(-1)) + 1)], String(parseInt(data.value.id.substr(-1)) + 1));
+      this._tabsLoaded.push(String(parseInt(data.value.id.substr(-1)) + 1));
+    }
   }
 
   //render schedule after search result.
@@ -98,10 +120,7 @@ class RoosterPage extends Page {
       this._tabsLoaded.push(this.tabFolder.selection.id.substr(-1));
       this.tabFolder.on('selectionChanged', (data) => {
         firebase.Analytics.logEvent(`schedule_tab${data.value.id.substr(-1)}_opened`, {screen: 'scheduleScreen'});
-        if (!(this._tabsLoaded.includes(data.value.id.substr(-1)))) {
-          this._renderSchedule(json[data.value.id.substr(-1)], data.value.id.substr(-1));
-          this._tabsLoaded.push(String(data.value.id.substr(-1)));
-        }
+        this._loadTabsOnSelectionChange(data, json)
       });
       firebase.Analytics.logEvent('schedule_rendered', {screen: 'scheduleScreen'})
     }).catch((error) => {
@@ -209,7 +228,7 @@ class RoosterPage extends Page {
 
   _generateTabs(json) {
     this.tabFolder.background = colors.UI_bg;
-    let firstWeekNumber = getWeekNumber(new Date()) - 1;
+    let firstWeekNumber = getWeekNumber(new Date()) - 12;
     this._tabList = [];
     for (let weekIndex = 0; weekIndex < 7; weekIndex++) {
       let tabTitle;
