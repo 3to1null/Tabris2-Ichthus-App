@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="650f0975-a378-4b43-a65c-01890a7e6541" name="Default" comment="Added custom materialInput widget">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/appDrawer.js" afterPath="$PROJECT_DIR$/src/appDrawer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" afterPath="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" afterPath="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globalFunctions/appointmentCellBackgroundGenerator.js" afterPath="$PROJECT_DIR$/src/globalFunctions/appointmentCellBackgroundGenerator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globalFunctions/createIconCircle.js" afterPath="$PROJECT_DIR$/src/globalFunctions/createIconCircle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/calendarComponent/calendarPage.js" afterPath="$PROJECT_DIR$/src/calendarComponent/calendarPage.js" />
     </list>
     <ignored path="Tabris2-Ichthus-App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,6 +16,26 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="calendarPage.js" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/calendarComponent/calendarPage.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="720">
+                    <caret line="124" column="31" lean-forward="true" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="Tabris2-Ichthus-App" />
   </component>
@@ -29,7 +44,7 @@
       <file leaf-file-name="appDrawer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/appDrawer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="374">
               <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
               <folding />
             </state>
@@ -49,7 +64,7 @@
       <file leaf-file-name="cijferPage.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="-30">
               <caret line="137" column="82" lean-forward="false" selection-start-line="137" selection-start-column="82" selection-end-line="137" selection-end-column="82" />
               <folding />
             </state>
@@ -81,16 +96,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
               <caret line="28" column="41" lean-forward="false" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calendarPage.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/calendarComponent/calendarPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -200,10 +205,10 @@
         <option value="$PROJECT_DIR$/src/agendaComponent/getAgenda.js" />
         <option value="$PROJECT_DIR$/src/agendaComponent/agendaPage.js" />
         <option value="$PROJECT_DIR$/src/calendarComponent/getCalendar.js" />
-        <option value="$PROJECT_DIR$/src/calendarComponent/calendarPage.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/createIconCircle.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" />
+        <option value="$PROJECT_DIR$/src/calendarComponent/calendarPage.js" />
       </list>
     </option>
   </component>
@@ -225,9 +230,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="x" value="216" />
+    <option name="y" value="40" />
+    <option name="width" value="1162" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
@@ -504,7 +509,7 @@
       <workItem from="1509634495852" duration="759000" />
       <workItem from="1509890287761" duration="899000" />
       <workItem from="1510224191595" duration="2850000" />
-      <workItem from="1510337463655" duration="995000" />
+      <workItem from="1510337463655" duration="4940000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1497886535188</created>
@@ -525,7 +530,7 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="enabled" value="true" />
-    <option name="totallyTimeSpent" value="189716000" />
+    <option name="totallyTimeSpent" value="193661000" />
     <option name="suspendDelayInSeconds" value="300" />
     <option name="showClosedTasks" value="false" />
     <option name="showSpentTimeFromLastPost" value="true" />
@@ -863,14 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/appDrawer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/globalFunctions/Request.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -883,14 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="57" lean-forward="false" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/calendarComponent/calendarPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -935,10 +924,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/appDrawer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="27" column="32" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="-30">
           <caret line="137" column="82" lean-forward="false" selection-start-line="137" selection-start-column="82" selection-end-line="137" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/calendarComponent/calendarPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="124" column="31" lean-forward="true" selection-start-line="124" selection-start-column="31" selection-end-line="124" selection-end-column="31" />
           <folding />
         </state>
       </provider>
