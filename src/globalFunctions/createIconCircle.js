@@ -2,7 +2,7 @@ const {device} = require('tabris');
 const colors = require('../appSettings/colors');
 
 
-module.exports = (canvas, cijfer, size) => {
+module.exports = (canvas, cijfer, size, backgroundColor) => {
   let canvasSizeX, canvasSizeY, radius, fontSize;
   switch (size){
     case 'small':
@@ -26,7 +26,7 @@ module.exports = (canvas, cijfer, size) => {
 
   context.beginPath();
   context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-  context.fillStyle = colors.accent;
+  context.fillStyle = backgroundColor || colors.accent;
   context.fill();
 
   context.fillStyle = colors.white_bg;

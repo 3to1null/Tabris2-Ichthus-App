@@ -64,8 +64,8 @@ class appointmentDetailsPage extends Page{
           bottom: 0, height: 1, left: 84, right: 12,
           background: colors.white_white_grey_bg
         }).appendTo(cellContainer);
-
-        createCircleIcon(canvasCijfer, cellType, 'cijferDetailView');
+        let circleIconBackground = parseFloat(cellType) > 5.5 ? colors.accent : colors.accent_deepOrange;
+        createCircleIcon(canvasCijfer, cellType, 'cijferDetailView', circleIconBackground);
         return cellContainer
       },
       updateCell: (cell, index) => {

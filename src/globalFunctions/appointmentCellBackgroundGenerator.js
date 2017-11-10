@@ -14,6 +14,8 @@ module.exports = (appointment, cellIndex) => {
     return rowIsOdd ? '#ff0000' : '#ff3333';
   } else if (appointment['moved'] === true) {
     return rowIsOdd ? '#ff9900' : '#ffad33';
+  } else if(appointment['type'] === 'exam'){
+    return rowIsOdd ? "#DCE775" : '#CDDC39';
   } else {
     return rowIsOdd ? '#ccccff' : '#e6e6ff';
   }

@@ -114,7 +114,7 @@ class CijferPage extends Page {
         cellType: (index) => {
           return cijferItems[index].average;
         },
-        createCell: (celltype) => {
+        createCell: (cellType) => {
           let cellContainer;
           if(device.version >= 23){
             cellContainer = new Composite({highlightOnTouch:true});
@@ -135,7 +135,8 @@ class CijferPage extends Page {
             height: 50,
           });
           canvasCijfer.appendTo(cellContainer);
-          createCircleIcon(canvasCijfer, celltype, 'small');
+          let circleIconBackground = parseFloat(cellType) > 5.5 || cellType === '-' ? colors.accent : colors.accent_deepOrange;
+          createCircleIcon(canvasCijfer, cellType, 'small', circleIconBackground);
           new TextView({
             left: 45+24,
             right: 0,
