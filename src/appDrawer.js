@@ -4,6 +4,7 @@ const FlatButton = require('./widgets/FlatButton');
 const colors = require('./appSettings/colors');
 
 const createCijferPage = require('./cijferComponent/cijferPage');
+const createAgendaPage = require('./calendarComponent/calendarPage');
 
 const topContainerHeight = 100;
 const leftMargin = 16;
@@ -14,7 +15,7 @@ class AppDrawer{
     this._rootNavigationView = rootNavigationView;
     this._drawer.background = colors.white_bg;
     this.enableDrawer();
-    this._drawerItems = ['Rooster', 'Cijferlijsten', 'Instellingen'];
+    this._drawerItems = ['Rooster', 'Cijferlijsten', 'Agenda', 'Instellingen'];
     this._createTopContainer();
     this._createPageSelector();
     this._activePage = 'Rooster';
@@ -23,7 +24,8 @@ class AppDrawer{
     };
 
     this._createPageFunctions = {
-      'Cijferlijsten': createCijferPage
+      'Cijferlijsten': createCijferPage,
+      'Agenda': createAgendaPage
     }
 
   }
