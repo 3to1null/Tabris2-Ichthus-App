@@ -8,7 +8,8 @@
     "start": "tabris serve"
   },
   "dependencies": {
-    "tabris": "^2.1.1"
+    "tabris": "^2.1.1",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "eslint": "^4.8.0"

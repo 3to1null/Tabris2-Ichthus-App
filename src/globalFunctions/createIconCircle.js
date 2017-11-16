@@ -2,7 +2,7 @@ const {device} = require('tabris');
 const colors = require('../appSettings/colors');
 
 
-module.exports = (canvas, cijfer, size, backgroundColor) => {
+module.exports = (canvas, text, size, backgroundColor) => {
   let canvasSizeX, canvasSizeY, radius, fontSize;
   switch (size){
     case 'small':
@@ -17,6 +17,12 @@ module.exports = (canvas, cijfer, size, backgroundColor) => {
       radius = 24;
       fontSize = '24px';
       break;
+    default:
+      canvasSizeX = size;
+      canvasSizeY = size;
+      radius = size / 2 - 2;
+      fontSize = radius < 24 ? `${radius}px` : '24px'
+
   }
   const scaleFactor = device.scaleFactor;
   const context = canvas.getContext('2d', canvasSizeX * scaleFactor, canvasSizeY * scaleFactor);
@@ -33,5 +39,5 @@ module.exports = (canvas, cijfer, size, backgroundColor) => {
   context.textAlign = 'center';
   context.textBaseline = 'middle';
   context.font = fontSize;
-  context.fillText(cijfer, centerX, centerY);
+  context.fillText(text, centerX, centerY);
 };
