@@ -2,11 +2,7 @@ firebase.Analytics.analyticsCollectionEnabled = true;
 
 const {Button, NavigationView, ui} = require('tabris');
 const handleLogin = require('./loginComponent/loginPage');
-const createRoosterPage = require('./roosterComponent/roosterPage');
 const colors = require('./appSettings/colors');
-const AppDrawer = require('./appDrawer');
-
-
 
 const isLoggedIn = require('./globalFunctions/isLoggedIn');
 
@@ -25,6 +21,8 @@ let rootNavigationView = new NavigationView({
 
 //bootstraps the complete application with the exception of the login screen.
 const bootstrapApp = (wasLoggedInOnStart=true) => {
+    const AppDrawer = require('./appDrawer');
+    const createRoosterPage = require('./roosterComponent/roosterPage');
     createRoosterPage(rootNavigationView);
     rootNavigationView.drawerActionVisible = true;
     let appDrawer = new AppDrawer(rootNavigationView);
