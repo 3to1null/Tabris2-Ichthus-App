@@ -27,7 +27,6 @@ class LoginPage extends Page {
     this._createLoginUI();
     this._createInputSegment();
     this._logPage();
-    console.log('login Constructor')
   }
 
   //logs opening of loginPage and sets screenName.

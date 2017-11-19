@@ -8,9 +8,9 @@ module.exports = class MaterialInput extends Composite {
     constructor(properties, label, type, font) {
         super(Object.assign({}, properties));
         this._properties = properties;
-        this.textLabel = label;
-        this.inputType = type || 'default';
-        this.fontSize = font || '17px';
+        this.textLabel = properties.text || label;
+        this.inputType = properties.type || type || 'default';
+        this.fontSize = properties.font || font || '17px';
         this._createWidget()
     }
 
@@ -26,7 +26,7 @@ module.exports = class MaterialInput extends Composite {
                     scaleX: 0.75,
                     scaleY: 0.75,
                     translationY: -20,
-                    translationX: -38
+                    translationX: -37
                 }
             })
         })

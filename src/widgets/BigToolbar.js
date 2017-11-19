@@ -5,8 +5,10 @@ module.exports = class BigToolbar extends Composite {
 
     constructor(properties, title, subTitle, background) {
         super(Object.assign({}, properties));
-        this.title = title;
-        this.subTitle = subTitle;
+        this.title = properties.title || title;
+        this.animateToBigToolbar = properties.animateToBigToolbar || false;
+        this.height = properties.height;
+        this.subTitle = properties.subTitle || subTitle;
         this.background = background || colors.UI_bg;
         this._createToolbar();
         this._createTitles();
@@ -15,6 +17,10 @@ module.exports = class BigToolbar extends Composite {
     _createToolbar() {
         this.set('background', this.background);
         this.set('elevation', 4);
+        if(this.animateToBigToolbar){
+          this.set('transform', {translationY: - (this.height - 56)})
+        }
+        this.animate({transform: {translationY: "0"}}, {delay: 0, duration: 300, easing: "ease-out"});
     }
 
     _createTitles() {
@@ -33,6 +39,8 @@ module.exports = class BigToolbar extends Composite {
             textColor: colors.white_bg
         }).appendTo(this);
     }
+
+    
 
     // _createSubmitButton() {
     //     this._submitButton = new Composite

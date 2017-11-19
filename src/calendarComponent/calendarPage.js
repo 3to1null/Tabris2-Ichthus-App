@@ -7,7 +7,7 @@ const FloatingActionButton = require('../widgets/FloatingActionButton');
 const colors = require('../appSettings/colors');
 const getCalendar = require('./getCalendar');
 const showToast = require('../globalFunctions/showToast');
-
+const createCalendarItemPage = require('./createCalendarItemPage');
 const initialPageTitle = 'Agenda';
 
 class AgendaPage extends Page {
@@ -43,7 +43,7 @@ class AgendaPage extends Page {
       right: 16, bottom: 16, height: 56, width: 56,
       color: colors.accent,
       image: {src: "src/img/ic_add_white_36dp.png", width: 24, height: 24}
-    }).appendTo(this)
+    }).on("touchEnd", event => createCalendarItemPage()).appendTo(this)
   }
 
   _updateCalendarList(collectionView){
