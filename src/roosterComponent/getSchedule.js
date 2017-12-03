@@ -3,7 +3,7 @@ const showToast = require('../globalFunctions/showToast');
 
 module.exports = function getSchedule(userCode="~me") {
   return new Promise((resolve, reject) => {
-    let requestTimeout, showScheduleOldToast1Day, showScheduleOldToast2Day;
+    let requestTimeout, showScheduleOldToast1Day, showScheduleOldToast2Day, promiseResolved;
     let downloadedScheduleList = JSON.parse(localStorage.getItem('downloadedScheduleList')) || [];
     if(localStorage.getItem(`lastScheduleGetTime${userCode}`) === undefined || localStorage.getItem(`lastScheduleGetTime${userCode}`) === null){
       requestTimeout = 0;
@@ -24,8 +24,8 @@ module.exports = function getSchedule(userCode="~me") {
         if(localStorage.getItem(`lastScheduleGetTime${userCode}`) === undefined || localStorage.getItem(`lastScheduleGetTime${userCode}`) === null){
           reject(new Error('Request timed out, no offline schedule.'))
           //shouldn't be called!!
-        }else{
-          console.log('timed out');
+        }else if(!promiseResolved){
+          console.log('offline req timeout custom')
           if(showScheduleOldToast1Day){
             showToast('Het rooster is ouder dan een dag, lessen zouden in tussentijd veranderd kunnen zijn.')
           }else if(showScheduleOldToast2Day){
@@ -43,6 +43,7 @@ module.exports = function getSchedule(userCode="~me") {
         localStorage.setItem(`weekSchedule${userCode}`, JSON.stringify(json));
         downloadedScheduleList.push(userCode);
         localStorage.setItem('downloadedScheduleList', JSON.stringify(downloadedScheduleList));
+        promiseResolved = true;
         resolve(json);
       }))}, (error) => {
         if(localStorage.getItem(`lastScheduleGetTime${userCode}`) === undefined || localStorage.getItem(`lastScheduleGetTime${userCode}`) === null){
@@ -53,6 +54,7 @@ module.exports = function getSchedule(userCode="~me") {
           }else if(showScheduleOldToast2Day){
             showToast('Het rooster is meer dan 2 dagen oud, lessen zouden in tussentijd veranderd kunnen zijn.')
           }
+          promiseResolved = true;
           resolve(JSON.parse(localStorage.getItem(`weekSchedule${userCode}`)));
         }
     });
