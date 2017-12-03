@@ -144,7 +144,27 @@ class RoosterPage extends Page {
   }
 
   //gets new proposals on input in searchbar.
+  //TODO: did we just break this??
   _getProposals(searchQuery) {
+    function returnOfflineProposals(){
+      let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
+      let offlineProposals = offlineProposalsObjects.map(proposal => proposal.name);
+      this.proposals = offlineProposalsObjects;
+      this.searchAction.proposals = offlineProposals.filter((proposal) => {
+        try{
+          return proposal.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1;
+        } catch (err){
+          console.log(err)
+        }
+      })
+    }
+    function returnBestProposals() {
+      let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
+      let offlineProposals = offlineProposalsObjects.map(proposal => proposal.name);
+      console.log(offlineProposalsObjects)
+      this.proposals = offlineProposalsObjects;
+      this.searchAction.proposals = json.map(proposal => proposal.name);
+    }
     if (searchQuery !== '') {
       new Request('searchQuery', {q: searchQuery}, false, false, 300).get().then(((response) => {
         response.json().then((json) => {
@@ -152,18 +172,10 @@ class RoosterPage extends Page {
           this.searchAction.proposals = json.map(proposal => proposal.name);
         })
       }), (error) => {
-        console.log(error);
-        let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
-        let offlineProposals = offlineProposalsObjects.map(proposal => proposal.name);
-        this.proposals = offlineProposalsObjects;
-        this.searchAction.proposals = offlineProposals.filter((proposal) => {
-          try{
-            return proposal.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1;
-          } catch (err){
-            console.log(err)
-          }
-        })
+        returnOfflineProposals()
       });
+    }else{
+      returnBestProposals()
     }
   }
 

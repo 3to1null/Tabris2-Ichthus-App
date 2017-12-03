@@ -27,5 +27,7 @@
     <hook type="after_platform_add" src="copyAndroidRes.js" />
 
 
-    <plugin name="tabris-plugin-firebase" spec="https://github.com/eclipsesource/tabris-plugin-firebase.git" />
+    <plugin name="tabris-plugin-firebase" spec="^1.0.0" />
+    <plugin name="cordova-plugin-datetimepicker" spec="^1.0.0" />
+
 </widget>
