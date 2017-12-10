@@ -1,8 +1,11 @@
-const {Page, ui, ScrollView, ImageView, Composite, TextView} = require('tabris');
+const {Page, ui, ScrollView, ImageView, Composite, TextView, app} = require('tabris');
 const BigToolbar = require('../widgets/BigToolbar');
 const cellBackgroundGenerator = require('../globalFunctions/appointmentCellBackgroundGenerator');
 const colors = require('../appSettings/colors');
 const MaterialInput = require('../widgets/MaterialInput');
+const FlatButton = require('../widgets/FlatButton');
+const showToast = require('../globalFunctions/showToast');
+const Request = require('../globalFunctions/Request');
 
 const toolbarHeight = '170';
 const days = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
@@ -31,6 +34,22 @@ class createCalendarItemPage extends Page {
     });
   }
 
+  _saveItem(){
+    function noPropsToast(property) {
+      showToast(`Je hebt nog geen ${property} ingevoerd.`)
+    }
+    this._newItemProps.date = this._prettifyDate(this._newItemProps.date, false);
+    if(this._newItemProps.title === ''){noPropsToast('titel')}
+    else if(this._newItemProps.date.startsWith('NaN')){noPropsToast('datum')}
+    else if(this._newItemProps.time === ''){noPropsToast('tijd')}
+    else{
+      console.log(this._newItemProps)
+      new Request('calendar/create', this._newItemProps).post().then((json) => {
+        console.log(json)
+      })
+    }
+  }
+
   _generateUI() {
     this._rootNavigationView.set('toolbarVisible', false);
     this._toolbar = new BigToolbar({
@@ -40,16 +59,42 @@ class createCalendarItemPage extends Page {
       height: toolbarHeight,
       animateToBigToolbar: true,
     }, this.title, this.subTitle).appendTo(this);
+
+    this._saveButton = new FlatButton(
+      {
+        bottom: 0, height: 50, right: 0, left: 0,
+        background: colors.white_grey_bg,
+        font: '19px',
+        textColor: colors.UI_bg,
+        id: 'saveButton',
+        highlightColor: colors.black_grey,
+        textAlignment: 'right',
+      }
+    ).appendTo(this);
+    this._saveButton.text = 'Opslaan';
+    this._saveButton.on('touchEnd', () => {
+      this._saveItem()
+    });
+
+    this._toolbar.addAction({
+      side: 'left',
+      image: {src: 'src/img/ic_add_white_36dp.png'},
+      transform: {rotation: (1 / 4 * Math.PI)}
+    }).on('touchEnd', () => {
+      this.dispose();
+    });
     this._toolbar.addAction({
       side: 'right',
-      image: {src: 'src/img/ic_add_white_36dp.png'}
-    })
+      image: {src: 'src/img/ic_done_white_36dp.png'},
+    }).on('touchEnd', () => {
+      this._saveItem()
+    });
   }
 
   _generateInfoBox() {
     let titleInput, descriptionInput;
     let calendarInfoBox = new ScrollView({
-      left: 0, right: 0, top: toolbarHeight, bottom: 0
+      left: 0, right: 0, top: toolbarHeight, bottom: 50
     }).appendTo(this);
 
     //TODO: following lines should be cleaner?
@@ -132,8 +177,9 @@ class createCalendarItemPage extends Page {
     let outerScope = this;
 
     DateTimePicker.pick(options, function (timestamp) {
+      let prettyDate = outerScope._prettifyDate(timestamp);
       outerScope._newItemProps.date = timestamp;
-      outerScope._dateTextView.text = outerScope._prettifyDate(timestamp);
+      outerScope._dateTextView.text = prettyDate;
     });
   }
 
@@ -147,19 +193,25 @@ class createCalendarItemPage extends Page {
     let outerScope = this;
 
     DateTimePicker.pick(options, function (timestamp) {
-      outerScope._newItemProps.time = timestamp;
-      outerScope._timeTextView.text = outerScope._prettifyTime(timestamp)
+      let prettyTime = outerScope._prettifyTime(timestamp);
+      outerScope._newItemProps.time = prettyTime;
+      outerScope._timeTextView.text = prettyTime;
     });
   }
 
 
 
   //date should be in ms
-  _prettifyDate(date){
+  _prettifyDate(date, verbal=true){
     let dateObject = new Date(date);
-    let dayName = days[dateObject.getDay()];
-    let monthName = months[dateObject.getMonth()];
-    return `${dayName}, ${dateObject.getDate()} ${monthName} ${dateObject.getFullYear()}`
+    if(verbal){
+      let dayName = days[dateObject.getDay()];
+      let monthName = months[dateObject.getMonth()];
+      return `${dayName}, ${dateObject.getDate()} ${monthName} ${dateObject.getFullYear()}`
+    }else{
+      return `${dateObject.getFullYear()}-${dateObject.getMonth() + 1}-${dateObject.getDate()}`
+    }
+
   }
   //timestamp should be in ms
   _prettifyTime(timestamp){
@@ -168,6 +220,7 @@ class createCalendarItemPage extends Page {
     let minutes = dateObject.getMinutes();
     return `${hours}:${minutes}`
   }
+
 
 
 

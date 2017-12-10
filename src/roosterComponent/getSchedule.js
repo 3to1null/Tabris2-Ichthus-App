@@ -3,18 +3,20 @@ const showToast = require('../globalFunctions/showToast');
 
 module.exports = function getSchedule(userCode="~me") {
   return new Promise((resolve, reject) => {
-    let requestTimeout, showScheduleOldToast1Day, showScheduleOldToast2Day, promiseResolved;
+    let requestTimeout, showOldScheduleToast, showScheduleOldToast2Day, promiseResolved, oldScheduleToastMessage;
     let downloadedScheduleList = JSON.parse(localStorage.getItem('downloadedScheduleList')) || [];
     if(localStorage.getItem(`lastScheduleGetTime${userCode}`) === undefined || localStorage.getItem(`lastScheduleGetTime${userCode}`) === null){
       requestTimeout = 0;
     }else{
       let timePassedSinceLastSchedule = Math.floor(Date.now() / 1000) - parseInt(localStorage.getItem(`lastScheduleGetTime${userCode}`));
       if(timePassedSinceLastSchedule > 60 * 60 * 48){
-        requestTimeout = 3000;
-        showScheduleOldToast2Day = true;
+        requestTimeout = 5000;
+        showOldScheduleToast = true;
+        oldScheduleToastMessage = 'Dit rooster is ouder dan twee dagen, lessen zouden in tussentijd veranderd kunnen zijn.'
       } else if(timePassedSinceLastSchedule > 60 * 60 * 24){
-        requestTimeout = 2000;
-        showScheduleOldToast1Day = true;
+        requestTimeout = 2500;
+        showOldScheduleToast = true;
+        oldScheduleToastMessage = 'Dit rooster is ouder dan een dag, lessen zouden in tussentijd veranderd kunnen zijn.'
       } else if(timePassedSinceLastSchedule > 60 * 60){
         requestTimeout = 1500;
       } else{
@@ -25,11 +27,9 @@ module.exports = function getSchedule(userCode="~me") {
           reject(new Error('Request timed out, no offline schedule.'))
           //shouldn't be called!!
         }else if(!promiseResolved){
-          console.log('offline req timeout custom')
-          if(showScheduleOldToast1Day){
-            showToast('Het rooster is ouder dan een dag, lessen zouden in tussentijd veranderd kunnen zijn.')
-          }else if(showScheduleOldToast2Day){
-            showToast('Het rooster is meer dan 2 dagen oud, lessen zouden in tussentijd veranderd kunnen zijn.')
+          console.log('offline req timeout custom');
+          if(showOldScheduleToast){
+            showToast(oldScheduleToastMessage)
           }
           resolve(JSON.parse(localStorage.getItem(`weekSchedule${userCode}`)));
         }
@@ -49,7 +49,7 @@ module.exports = function getSchedule(userCode="~me") {
         if(localStorage.getItem(`lastScheduleGetTime${userCode}`) === undefined || localStorage.getItem(`lastScheduleGetTime${userCode}`) === null){
           reject(error)
         }else{
-          if(showScheduleOldToast1Day){
+          if(showOldScheduleToast){
             showToast('Het rooster is ouder dan een dag, lessen zouden in tussentijd veranderd kunnen zijn.')
           }else if(showScheduleOldToast2Day){
             showToast('Het rooster is meer dan 2 dagen oud, lessen zouden in tussentijd veranderd kunnen zijn.')

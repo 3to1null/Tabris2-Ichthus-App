@@ -45,12 +45,13 @@ module.exports = class BigToolbar extends Composite {
   //TODO: add icon stacking on right side?
   addAction(properties){
     let parsedProperties = {
-      top: 0,
-      height: 24,
-      image: properties.image
+      top: 2,
+      height: 28,
+      image: properties.image,
+      transform: properties.transform
     };
     //aligns icon to correct side
-    if(properties.side === 'left'){parsedProperties.left = 0}else{parsedProperties.right = 0}
+    if(properties.side === 'left'){parsedProperties.left = 2}else{parsedProperties.right = 2}
     //creates ImageView / action
     let actionImageView = new ImageView(parsedProperties);
     actionImageView.appendTo(this);
