@@ -28,6 +28,7 @@ class RoosterPage extends Page {
     this._scheduleCollectionList = {};
     this.progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this);
 
+
     firebase.Analytics.logEvent('get_schedule', {screen: 'scheduleScreen'});
     getSchedule().then((json) => {
       this.progessBar.dispose();

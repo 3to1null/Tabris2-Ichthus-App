@@ -41,6 +41,7 @@ class FilesPage extends Page {
   }
 
   _createActions(path){
+    //TODO: update images to higher res.
     new Action({
       id: 'actionCreateFolder',
       title: 'Nieuwe map',
@@ -51,6 +52,7 @@ class FilesPage extends Page {
           this._createDir(path, results.input1)
         }
       }
+      // TODO: add callback, so the folder actually gets created
       navigator.notification.prompt(
         'Hoe moet de map genoemd worden?',
         onButtonPress,
