@@ -1,7 +1,7 @@
 /**
  * Created by Nathan on 24-9-2017.
  */
-const {Page, Action, CollectionView, ui, ImageView, TextView, Composite} = require('tabris');
+const {Page, Action, CollectionView, ui, ImageView, TextView, Composite, ActionSheet} = require('tabris');
 const IndeterminateProgressBar = require('../widgets/IndeterminateProgressBar');
 const colors = require('../appSettings/colors');
 const initialPageTitle = 'Bestanden';
@@ -154,7 +154,22 @@ class FilesPage extends Page {
     }else if(file.img){
 
     }else{
-      downloadFile(file)
+      downloadFile(file).then(({name, entry}) => {
+        this._progessBar.dispose();
+        window.cordova.plugins.FileOpener.canOpenFile(
+          decodeURIComponent(entry.toURL()),
+          () => {
+            new ActionSheet({
+              title: name,
+              message: `Wil je ${name} openen?`,
+              actions: [
+                {title: 'Open'},
+                {title: 'Annuleren', style: 'cancel'}
+              ]
+            }).open()
+          }
+        )
+      })
     }
   }
 
