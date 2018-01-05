@@ -31,8 +31,10 @@
     <plugin name="cordova-plugin-datetimepicker" spec="^1.0.0" />
     <plugin name="cordova-plugin-dialogs" version="^1.1.1" />
     <plugin name="cordova-plugin-fileopener" />
+    <plugin name="cordova-plugin-file-opener2" />
     <plugin name="cordova-plugin-file" />
     <plugin name="cordova-plugin-file-transfer" spec="1.6"/>
+    <plugin name="cordova-ourcodeworld-filebrowser" spec="https://github.com/ourcodeworld/cordova-ourcodeworld-filebrowser.git" />
 
 
 </widget>

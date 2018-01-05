@@ -8,6 +8,7 @@ const initialPageTitle = 'Bestanden';
 const showToast = require('../globalFunctions/showToast');
 const getFiles = require('./getFiles');
 const downloadFile = require('./downloadFile');
+const openFile = require('./openFile');
 
 
 
@@ -166,6 +167,8 @@ class FilesPage extends Page {
                 {title: 'Open'},
                 {title: 'Annuleren', style: 'cancel'}
               ]
+            }).on('select', ({index}) => {
+              if(index === 0){openFile(entry)}
             }).open()
           }
         )
