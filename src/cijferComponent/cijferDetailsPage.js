@@ -11,7 +11,6 @@ class appointmentDetailsPage extends Page{
     this._rootNavigationView = ui.contentView.find('#rootNavigationView');
     this.vakData = vakData;
     this.cijfers = this.vakData.cijfers.list;
-
     this._createCijferCollection();
   }
 
