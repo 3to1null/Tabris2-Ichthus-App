@@ -160,6 +160,7 @@ class CijferPage extends Page {
         }
       }).on('select', ({index}) => {
         let cijfers = cijferItems[index];
+        firebase.Analytics.logEvent('open_cijfer_detailpage', {screen: 'cijferScreen', vak: cijfers.subject});
         if(cijfers.average === '-'){
           showToast(`Er zijn nog geen cijfers beschikbaar voor ${cijfers.subject}.`)
         }else{

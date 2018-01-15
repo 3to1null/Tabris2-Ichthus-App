@@ -6,6 +6,7 @@ const colors = require('./appSettings/colors');
 const createCijferPage = require('./cijferComponent/cijferPage');
 const createAgendaPage = require('./calendarComponent/calendarPage');
 const createFilesPage = require('./filesComponent/filesPage');
+const createSettingsPage = require('./settingsComponent/settingsPage');
 
 const topContainerHeight = 100;
 const leftMargin = 16;
@@ -32,7 +33,8 @@ class AppDrawer{
     this._createPageFunctions = {
       'Cijferlijsten': createCijferPage,
       'Bestanden': createFilesPage,
-      //'Agenda': createAgendaPage
+      //'Agenda': createAgendaPage,
+      'Instellingen': createSettingsPage
     }
 
   }

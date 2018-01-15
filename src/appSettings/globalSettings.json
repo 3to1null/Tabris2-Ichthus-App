@@ -1,0 +1,114 @@
+[
+  {
+    "isHeader": true,
+    "header": "Rooster",
+    "type": "header"
+  },
+  {
+    "storageKey": "-s-showLeraar",
+    "name": "showLeraar",
+    "desc": "Laat leraren zien",
+    "isHeader": false,
+    "default": true,
+    "type": "boolSwitch",
+    "toastOnChange": "Verandering is zichtbaar na het laden van een nieuw rooster."
+  },
+  {
+    "storageKey": "-s-showKlas",
+    "name": "showKlas",
+    "default": false,
+    "desc": "Laat klassen zien",
+    "isHeader": false,
+    "type": "boolSwitch",
+    "toastOnChange": "Verandering is zichtbaar na het laden van een nieuw rooster."
+  },
+  {
+    "isHeader": true,
+    "header": "Cijfers",
+    "type": "header"
+  },
+  {
+    "storageKey": "-s-differentColorMarks",
+    "name": "differentColorMarks",
+    "default": false,
+    "desc": "Geef onvoldoendes een andere kleur.",
+    "isHeader": false,
+    "type": "boolSwitch",
+    "toastOnChange": "Verandering is pas volledig zichtbaar na het opnieuw starten van de app."
+  },
+  {
+    "isHeader": true,
+    "header": "Bestanden",
+    "type": "header"
+  },
+  {
+    "storageKey": "-s-showImageDirectly",
+    "name": "showImageDirectly",
+    "desc": "Laat afbeeldingen zien zodra ze zijn gedownload.",
+    "isHeader": false,
+    "default": true,
+    "type": "boolSwitch",
+    "toastOnChange": "Instelling aangepast."
+  },
+  {
+    "storageKey": "-s-openFileOnDownload",
+    "name": "openFileOnDownload",
+    "desc": "Open bestand nadat het gedownload is",
+    "isHeader": false,
+    "default": "1",
+    "toastOnChange": "Instelling aangepast.",
+    "type": "picker",
+    "picker": "openFileOnDownload",
+    "options": [
+      {
+        "id": "open",
+        "name": "Altijd"
+      },
+      {
+        "id": "prompt",
+        "name": "Prompt"
+      },
+      {
+        "id": "close",
+        "name": "Nooit"
+      }
+    ]
+  },
+  {
+    "isHeader": true,
+    "header": "Overig",
+    "type": "header"
+  },
+  {
+    "name": "deleteAllFiles",
+    "desc": "Verwijder alle bestanden die door deze app gedownload zijn.",
+    "isHeader": false,
+    "type": "confirm",
+    "toastOnChange": "None",
+    "confirmPopup": {
+      "message": "Weet je zeker dat je ALLE bestanden die in het mapje 'Schoolbestanden' staan wilt verwijderen?",
+      "confirmFunction": "deleteAllDownloadedFiles",
+      "title": "Verwijder gedownloade bestanden",
+      "actions": [
+        {"title": "Bewaar"},
+        {"title": "Verwijder bestanden", "style": "destructive"}
+      ]
+    }
+  },
+  {
+    "name": "uitloggen",
+    "desc": "Uitloggen",
+    "isHeader": false,
+    "type": "confirm",
+    "toastOnChange": "None",
+    "confirmPopup": {
+      "message": "Weet je zeker dat je wilt uitloggen? De app wordt na het uitloggen opnieuw opgestart.",
+      "confirmFunction": "confirmLogout",
+      "title": "Uitloggen",
+      "actions": [
+        {"title": "Ingelogd blijven"},
+        {"title": "Uitloggen", "style": "destructive"}
+      ]
+    }
+  }
+]
