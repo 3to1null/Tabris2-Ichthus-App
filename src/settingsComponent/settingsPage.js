@@ -92,7 +92,9 @@ class SettingsPage extends Page {
             }else{
               cell.children()[2].checked = Boolean(settingItem.default)
             }
-            cell.children()[2].on('checkedChanged', this._handleBoolSwitchSelectionChange)
+            cell.children()[2].on('checkedChanged', ({value: checked}) => {
+              this._handleBoolSwitchSelectionChange(settingItem, checked);
+            })
           }else if(settingItem.type === "picker"){
             cell.children()[2].itemCount = settingItem.options.length;
             cell.children()[2].itemText = (index) => settingItem.options[index].name;
@@ -121,7 +123,12 @@ class SettingsPage extends Page {
     }).appendTo(this)
   }
 
-  _handleBoolSwitchSelectionChange(){}
+  _handleBoolSwitchSelectionChange(settingItem, checked){
+    if(checked !== Boolean(localStorage.getItem(settingItem.storageKey))){
+      localStorage.setItem(settingItem.storageKey, checked);
+      showToast(settingItem.toastOnChange);
+    }
+  }
 
   _handlePickerSelectionChange(){}
 

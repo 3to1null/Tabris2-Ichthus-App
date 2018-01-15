@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="650f0975-a378-4b43-a65c-01890a7e6541" name="Default" comment="Added custom materialInput widget">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/buildAndPush.sh" afterPath="$PROJECT_DIR$/buildAndPush.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/appDrawer.js" afterPath="$PROJECT_DIR$/src/appDrawer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" afterPath="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" afterPath="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filesComponent/filesPage.js" afterPath="$PROJECT_DIR$/src/filesComponent/filesPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globalFunctions/Request.js" afterPath="$PROJECT_DIR$/src/globalFunctions/Request.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/appSettings/globalSettings.json" afterPath="$PROJECT_DIR$/src/appSettings/globalSettings.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globalFunctions/getSetting.js" afterPath="$PROJECT_DIR$/src/globalFunctions/getSetting.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" afterPath="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/widgets/FlatButton.js" afterPath="$PROJECT_DIR$/src/widgets/FlatButton.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/settingsComponent/settingsPage.js" afterPath="$PROJECT_DIR$/src/settingsComponent/settingsPage.js" />
     </list>
     <ignored path="Tabris2-Ichthus-App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +29,8 @@
           <file leaf-file-name="roosterPage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="277" column="38" lean-forward="false" selection-start-line="277" selection-start-column="38" selection-end-line="277" selection-end-column="38" />
+                <state relative-caret-position="340">
+                  <caret line="20" column="85" lean-forward="false" selection-start-line="20" selection-start-column="85" selection-end-line="20" selection-end-column="85" />
                   <folding />
                 </state>
               </provider>
@@ -44,18 +39,28 @@
           <file leaf-file-name="globalSettings.json" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/appSettings/globalSettings.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-3">
-                  <caret line="81" column="3" lean-forward="true" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
+                <state relative-caret-position="255">
+                  <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="settingsPage.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="getSetting.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/globalFunctions/getSetting.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="settingsPage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/settingsComponent/settingsPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="138" column="26" lean-forward="false" selection-start-line="138" selection-start-column="26" selection-end-line="138" selection-end-column="26" />
+                <state relative-caret-position="102">
+                  <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -249,15 +254,15 @@
         <option value="$PROJECT_DIR$/src/filesComponent/filesPage.js" />
         <option value="$PROJECT_DIR$/src/filesComponent/uploadFile.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/Request.js" />
-        <option value="$PROJECT_DIR$/src/globalFunctions/getSetting.js" />
-        <option value="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" />
         <option value="$PROJECT_DIR$/src/appDrawer.js" />
         <option value="$PROJECT_DIR$/buildAndPush.sh" />
         <option value="$PROJECT_DIR$/src/widgets/FlatButton.js" />
-        <option value="$PROJECT_DIR$/src/appSettings/globalSettings.json" />
         <option value="$PROJECT_DIR$/src/settingsComponent/settingsPage.js" />
+        <option value="$PROJECT_DIR$/src/appSettings/globalSettings.json" />
+        <option value="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
+        <option value="$PROJECT_DIR$/src/globalFunctions/getSetting.js" />
       </list>
     </option>
   </component>
@@ -340,6 +345,12 @@
               <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="filesComponent" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="globalFunctions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
@@ -606,7 +617,7 @@
       <workItem from="1515924995862" duration="1240000" />
       <workItem from="1515935681532" duration="79000" />
       <workItem from="1515944524838" duration="7104000" />
-      <workItem from="1516025008662" duration="2736000" />
+      <workItem from="1516025008662" duration="3480000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1497886535188</created>
@@ -627,7 +638,7 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="enabled" value="true" />
-    <option name="totallyTimeSpent" value="277937000" />
+    <option name="totallyTimeSpent" value="278681000" />
     <option name="suspendDelayInSeconds" value="300" />
     <option name="showClosedTasks" value="false" />
     <option name="showSpentTimeFromLastPost" value="true" />
@@ -936,13 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/globalFunctions/getSetting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="47" lean-forward="false" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/loginComponent/loginPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -962,6 +966,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="67" lean-forward="false" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,14 +1026,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="277" column="38" lean-forward="false" selection-start-line="277" selection-start-column="38" selection-end-line="277" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/filesComponent/filesPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1045,18 +1042,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="85" lean-forward="false" selection-start-line="20" selection-start-column="85" selection-end-line="20" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/appSettings/globalSettings.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="81" column="3" lean-forward="true" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
+        <state relative-caret-position="255">
+          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/settingsComponent/settingsPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="138" column="26" lean-forward="false" selection-start-line="138" selection-start-column="26" selection-end-line="138" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/globalFunctions/getSetting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="48" lean-forward="true" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
           <folding />
         </state>
       </provider>
