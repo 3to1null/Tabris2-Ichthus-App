@@ -13,6 +13,7 @@ module.exports = class FlatButton extends Composite {
     this._text = properties.text || '';
     this._highlightColor = properties.highlightColor || colors.divider_2;
     this._textAlignment = properties.textAlignment || 'center';
+    this._textLeftMargin = properties.textLeftMargin || '36';
     this._highlightOnTouch = (device.version >= 23);
     this.set('highlightOnTouch', this._highlightOnTouch);
     this._createButton();
@@ -30,8 +31,8 @@ module.exports = class FlatButton extends Composite {
       background: this._properties.background || colors.accent,
     }).appendTo(this);
     this._textView = new TextView({
-      top: 0, right: 36, left: 36, bottom: 0,
-      maxLines: 1,
+      top: 0, right: 36, left: this._textLeftMargin, bottom: 0,
+      maxLines: this._properties.maxLines || 1,
       font: this._properties.font || '16px',
       alignment: this._textAlignment,
       textColor: this._properties.textColor || colors.white_bg,
