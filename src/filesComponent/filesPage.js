@@ -8,6 +8,7 @@ const initialPageTitle = 'Bestanden';
 const showToast = require('../globalFunctions/showToast');
 const getFiles = require('./getFiles');
 const downloadFile = require('./downloadFile');
+const uploadFile = require('./uploadFile');
 const openFile = require('./openFile');
 
 
@@ -83,7 +84,10 @@ class FilesPage extends Page {
     });
     newFilesPage.on('appear', () => {
       this._activePage = newFilesPage;
-      console.log('test', this._activePage)
+      this._createActions(path)
+    });
+    newFilesPage.on('disappear', () => {
+      this._disposeActions()
     });
     newFilesPage.appendTo(ui.contentView.find('#rootNavigationView'));
     this._renderFiles(path, files, newFilesPage)
@@ -152,8 +156,8 @@ class FilesPage extends Page {
       getFiles(file.path).then((files) => {
         this._createNewFilesPage(file.path, files, file.name)
       });
-    }else if(file.img){
-
+    //}else if(file.img){
+    // custom handler for images?
     }else{
       downloadFile(file).then(({name, entry}) => {
         this._progessBar.dispose();
@@ -178,7 +182,24 @@ class FilesPage extends Page {
 
   _createDir(path, name){}
 
-  _uploadFile(path){}
+  _uploadFile(path){
+    window.OurCodeWorld.Filebrowser.filePicker.single({
+      success: function(data){
+        // Array with the file path
+        // ["file:///storage/emulated/0/360/security/file.txt"]
+        if(!data.length){
+          // No file selected
+          return;
+        }else{
+          uploadFile(path, data[0]).then()
+        }
+
+      },
+      error: function(err){
+        console.log(err);
+      }
+    });
+  }
 
 
 
