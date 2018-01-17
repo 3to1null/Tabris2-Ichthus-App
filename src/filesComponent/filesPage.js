@@ -10,6 +10,8 @@ const getFiles = require('./getFiles');
 const downloadFile = require('./downloadFile');
 const uploadFile = require('./uploadFile');
 const openFile = require('./openFile');
+const Request = require('../globalFunctions/Request');
+
 
 
 
@@ -49,9 +51,10 @@ class FilesPage extends Page {
       title: 'Nieuwe map',
       image: 'src/img/ic_create_new_folder_white.png'
     }).on('select', () => {
+      let outerScope = this;
       function onButtonPress(results) {
         if(results.buttonIndex === 1){
-          this._createDir(path, results.input1)
+          outerScope._createDir(path, results.input1)
         }
       }
       // TODO: add callback, so the folder actually gets created
@@ -149,6 +152,16 @@ class FilesPage extends Page {
       }).appendTo(page)
   }
 
+  _createDir(path, name){
+    return new Promise((resolve, reject) => {
+      new Request('files/mkdir', {path: path, dirName: name}).post().then((response) =>{response.json().then((json) => {
+        //TODO: Error handling
+        //TODO: Force refresh
+        resolve()
+      })})
+    })
+  }
+
   _onSelectFile(file){
     this._progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this._activePage);
     console.log(file);
@@ -179,8 +192,6 @@ class FilesPage extends Page {
       })
     }
   }
-
-  _createDir(path, name){}
 
   _uploadFile(path){
     window.OurCodeWorld.Filebrowser.filePicker.single({
