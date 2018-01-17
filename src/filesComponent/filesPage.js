@@ -54,7 +54,11 @@ class FilesPage extends Page {
       let outerScope = this;
       function onButtonPress(results) {
         if(results.buttonIndex === 1){
-          outerScope._createDir(path, results.input1)
+          outerScope._progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(outerScope._activePage);
+          outerScope._createDir(path, results.input1).then((files) => {
+            outerScope._createNewFilesPage(`${path}${results.input1}/`, files, results.input1);
+            outerScope._progessBar.dispose();
+          })
         }
       }
       // TODO: add callback, so the folder actually gets created
@@ -157,14 +161,14 @@ class FilesPage extends Page {
       new Request('files/mkdir', {path: path, dirName: name}).post().then((response) =>{response.json().then((json) => {
         //TODO: Error handling
         //TODO: Force refresh
-        resolve()
+        let newDirPath = `${path}${name}/`;
+        resolve(json.files, newDirPath, name)
       })})
     })
   }
 
   _onSelectFile(file){
     this._progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this._activePage);
-    console.log(file);
     if(file.dir){
       getFiles(file.path).then((files) => {
         this._createNewFilesPage(file.path, files, file.name)
