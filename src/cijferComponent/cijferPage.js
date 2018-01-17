@@ -9,6 +9,8 @@ const initialPageTitle = 'Cijferlijsten';
 const showToast = require('../globalFunctions/showToast');
 const cijferDetailsPage = require('./cijferDetailsPage');
 const createCircleIcon = require('../globalFunctions/createIconCircle');
+const getSetting = require('../globalFunctions/getSetting');
+
 
 const tabs = ['Periode 1', 'Periode 2', 'Periode 3', 'Examendossier'];
 
@@ -135,7 +137,13 @@ class CijferPage extends Page {
             height: 50,
           });
           canvasCijfer.appendTo(cellContainer);
-          let circleIconBackground = parseFloat(cellType) > 5.5 || cellType === '-' ? colors.accent : colors.accent_deepOrange;
+          let circleIconBackground = colors.accent;
+          if(parseFloat(cellType) < 5.5 || String(cellType).toUpperCase() === 'O'){
+            if(getSetting('differentColorMarks')){
+              circleIconBackground = colors.accent_deepOrange
+            }
+          }
+          //let circleIconBackground = parseFloat(cellType) > 5.5 || cellType === '-' ? colors.accent : colors.accent_deepOrange;
           createCircleIcon(canvasCijfer, cellType, 'small', circleIconBackground);
           new TextView({
             left: 45+24,

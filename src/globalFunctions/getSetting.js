@@ -1,6 +1,11 @@
 const globalSettings = require('../appSettings/globalSettings.json');
+const toBoolean = require('../globalFunctions/toBoolean');
 
 module.exports = (settingName) => {
-  //TODO get storagekey from globalSettings.json
-  return localStorage.getItem(`-s-${settingName}`)
+  let settingItem = globalSettings.filter(setting => setting.name === settingName)[0];
+  if(localStorage.getItem(String(settingItem.storageKey)) !== null){
+    return toBoolean(localStorage.getItem(String(settingItem.storageKey)));
+  }else{
+    return toBoolean(settingItem.default);
+  }
 };

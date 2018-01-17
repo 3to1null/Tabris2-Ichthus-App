@@ -1,7 +1,8 @@
 const {Page, ui, CollectionView, Canvas, Composite, TextView} = require('tabris');
 const createCircleIcon = require('../globalFunctions/createIconCircle');
-
+const getSetting = require('../globalFunctions/getSetting');
 const colors = require('../appSettings/colors');
+
 
 const toolbarHeight = '170';
 
@@ -63,7 +64,12 @@ class appointmentDetailsPage extends Page{
           bottom: 0, height: 1, left: 84, right: 12,
           background: colors.white_white_grey_bg
         }).appendTo(cellContainer);
-        let circleIconBackground = parseFloat(cellType) > 5.5 ? colors.accent : colors.accent_deepOrange;
+        let circleIconBackground = colors.accent;
+        if(parseFloat(cellType) < 5.5 || String(cellType).toUpperCase() === 'O'){
+          if(getSetting('differentColorMarks')){
+            circleIconBackground = colors.accent_deepOrange
+          }
+        }
         createCircleIcon(canvasCijfer, cellType, 'cijferDetailView', circleIconBackground);
         return cellContainer
       },

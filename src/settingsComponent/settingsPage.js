@@ -7,6 +7,7 @@ const initialPageTitle = 'Instellingen';
 const globalSettings = require('../appSettings/globalSettings.json');
 const FlatButton = require('../widgets/FlatButton');
 const showToast = require('../globalFunctions/showToast');
+const getSetting = require('../globalFunctions/getSetting');
 const headerHeight = 24;
 const settingHeight = 48;
 
@@ -38,7 +39,6 @@ class SettingsPage extends Page {
       createCell: (cellType) => {
         let cell = new Composite();
         if(cellType !== "header" && cellType !== "confirm"){
-          console.log('test');
           let descriptionRightMargin = 100;
           let description = new TextView({
             centerY: 0, left: 25, right: descriptionRightMargin,
@@ -87,11 +87,7 @@ class SettingsPage extends Page {
         }else if(settingItem.type !== "confirm"){
           cell.children()[0].text = settingItem.desc;
           if(settingItem.type === "boolSwitch"){
-            if(localStorage.getItem(settingItem.storageKey) !== null){
-              cell.children()[2].checked = Boolean(localStorage.getItem(settingItem.storageKey))
-            }else{
-              cell.children()[2].checked = Boolean(settingItem.default)
-            }
+            cell.children()[2].checked = getSetting(settingItem.name)
             cell.children()[2].on('checkedChanged', ({value: checked}) => {
               this._handleBoolSwitchSelectionChange(settingItem, checked);
             })
@@ -124,10 +120,8 @@ class SettingsPage extends Page {
   }
 
   _handleBoolSwitchSelectionChange(settingItem, checked){
-    if(checked !== Boolean(localStorage.getItem(settingItem.storageKey))){
-      localStorage.setItem(settingItem.storageKey, checked);
       showToast(settingItem.toastOnChange);
-    }
+      localStorage.setItem(settingItem.storageKey, checked)
   }
 
   _handlePickerSelectionChange(){}

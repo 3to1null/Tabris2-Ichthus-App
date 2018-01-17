@@ -15,6 +15,7 @@ const Request = require('../globalFunctions/Request');
 const showToast = require('../globalFunctions/showToast');
 // const appointmentDetailsPage = require('./appointmentDetailsPage');
 const cellBackgroundGenerator = require('../globalFunctions/appointmentCellBackgroundGenerator');
+const getSetting = require('../globalFunctions/getSetting');
 
 const initialPageTitle = 'Rooster';
 
@@ -229,7 +230,7 @@ class RoosterPage extends Page {
 
   _generateTabs(json) {
     this.tabFolder.background = colors.UI_bg;
-    let firstWeekNumber = getWeekNumber(new Date()) - 12;
+    let firstWeekNumber = getWeekNumber(new Date());
     this._tabList = [];
     for (let weekIndex = 0; weekIndex < 7; weekIndex++) {
       let tabTitle;
@@ -260,31 +261,66 @@ class RoosterPage extends Page {
     let leraar = cell.find('#leraar')[0];
     let subject = cell.find('#subject')[0];
     let lokaal = cell.find('#lokaal')[0];
+    let klas = cell.find('#klas')[0];
     if (appointment !== 'False' && appointment !== false && appointment !== 'false') {
-      leraar.text = appointment.teachers;
+      if(getSetting('showLeraar')){
+        leraar.text = appointment.teachers;
+      }
+      if(getSetting('showKlas')){
+        klas.text = appointment['groups'];
+      }
       subject.text = appointment.subjects;
       lokaal.text = appointment.locations;
     } else {
-      leraar.text = '';
+      if(getSetting('showLeraar')){
+        leraar.text = '';
+      }
+      if(getSetting('showKlas')){
+        klas.text = '';
+      }
       subject.text = '';
       lokaal.text = '';
     }
   }
 
   _renderSchedule(appointments, weekIndex) {
+    const scheduleCollectionTopMargin = Boolean(getSetting('showDaysAboveSchedule')) ? 20 : 0;
+    if(getSetting('showDaysAboveSchedule')){
+      let days = ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag'];
+      new CollectionView({
+        top: 0, left: 0, right: 0, height: scheduleCollectionTopMargin,
+        columnCount: 5,
+        itemCount: 5,
+        createCell: () => {
+          let cell = new Composite({
+            background: colors.UI_bg
+          });
+          new TextView({
+            centerY: 0, centerX: 0,
+            textColor: colors.white_light_bg
+          }).appendTo(cell);
+          return cell
+        },
+        updateCell: (cell, index) => {
+          cell.children()[0].text = days[index]
+        }
+      }).appendTo(this.tabFolder.find(`#weekTab${weekIndex}`))
+    }
     this._scheduleCollectionList[String(weekIndex)] = new CollectionView({
-      top: 0, left: 0, right: 0, bottom: 0,
+      top: scheduleCollectionTopMargin - 1, left: 0, right: 0, bottom: 0,
       class: 'scheduleCollection',
       columnCount: 5,
       itemCount: appointments.length,
       highlightOnTouch: true,
       createCell: () => {
         let cellContainer = new Composite();
-        new TextView({
-          top: 'prev()',
-          height: 20,
-          id: 'leraar'
-        }).appendTo(cellContainer);
+        if(getSetting('showLeraar')){
+          new TextView({
+            top: 'prev()',
+            height: 20,
+            id: 'leraar'
+          }).appendTo(cellContainer);
+        }
         new TextView({
           top: 'prev()',
           height: 20,
@@ -295,6 +331,13 @@ class RoosterPage extends Page {
           height: 20,
           id: 'lokaal'
         }).appendTo(cellContainer);
+        if(getSetting('showKlas')){
+          new TextView({
+            top: 'prev()',
+            height: 20,
+            id: 'klas'
+          }).appendTo(cellContainer);
+        }
         return cellContainer;
       },
       updateCell: (cell, index) => {

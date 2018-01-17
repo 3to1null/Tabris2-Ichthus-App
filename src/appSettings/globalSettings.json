@@ -39,7 +39,7 @@
   {
     "storageKey": "-s-differentColorMarks",
     "name": "differentColorMarks",
-    "default": false,
+    "default": true,
     "desc": "Geef onvoldoendes een andere kleur.",
     "isHeader": false,
     "type": "boolSwitch",
