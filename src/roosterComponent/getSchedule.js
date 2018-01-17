@@ -35,10 +35,7 @@ module.exports = function getSchedule(userCode="~me") {
         }
       }, requestTimeout + 1000);
     }
-
-
-
-    new Request('getSchedule', {userCode: userCode}, false, false, requestTimeout).get().then((response) => {response.json().then(((json) => {
+    new Request('schedule/get', {userCode: userCode}, false, false, requestTimeout).get().then((response) => {response.json().then(((json) => {
         localStorage.setItem(`lastScheduleGetTime${userCode}`, Math.floor(Date.now() / 1000));
         localStorage.setItem(`weekSchedule${userCode}`, JSON.stringify(json));
         downloadedScheduleList.push(userCode);

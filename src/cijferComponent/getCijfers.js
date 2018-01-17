@@ -10,7 +10,7 @@ module.exports  = function (periode, fromOfflineStorage, forceOfflineStorage) {
     }else{
       if((parseInt(Date.now()) - parseInt(localStorage.getItem(`cijferlijst${String(periode)}LastUpdated`)) > 10 * 1000)
         || localStorage.getItem(`cijferlijst${String(periode)}LastUpdated`) === null){
-        new Request('getCijfers', {periode: periode}).post().then((response) => {response.json().then((json) =>{
+        new Request('marks/get', {periode: periode}).post().then((response) => {response.json().then((json) =>{
           localStorage.setItem(`cijferlijst${String(periode)}`, JSON.stringify(json));
           localStorage.setItem(`cijferlijst${String(periode)}LastUpdated`, Date.now());
           resolve(json)
