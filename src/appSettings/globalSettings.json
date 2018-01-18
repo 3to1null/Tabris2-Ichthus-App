@@ -64,24 +64,10 @@
     "name": "openFileOnDownload",
     "desc": "Open bestand nadat het gedownload is",
     "isHeader": false,
-    "default": "1",
+    "default": false,
     "toastOnChange": "Instelling aangepast.",
-    "type": "picker",
-    "picker": "openFileOnDownload",
-    "options": [
-      {
-        "id": "open",
-        "name": "Altijd"
-      },
-      {
-        "id": "prompt",
-        "name": "Prompt"
-      },
-      {
-        "id": "close",
-        "name": "Nooit"
-      }
-    ]
+    "type": "boolSwitch",
+    "picker": "openFileOnDownload"
   },
   {
     "isHeader": true,

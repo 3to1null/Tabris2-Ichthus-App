@@ -11,6 +11,8 @@ const downloadFile = require('./downloadFile');
 const uploadFile = require('./uploadFile');
 const openFile = require('./openFile');
 const Request = require('../globalFunctions/Request');
+const getSetting = require('../globalFunctions/getSetting');
+
 
 
 class FilesPage extends Page {
@@ -53,6 +55,7 @@ class FilesPage extends Page {
 
       function onButtonPress(results) {
         if (results.buttonIndex === 1) {
+          firebase.Analytics.logEvent('create_new_folder', {screen: 'filesScreen'});
           outerScope._progessBar = new IndeterminateProgressBar({
             left: 0,
             right: 0,
@@ -91,6 +94,7 @@ class FilesPage extends Page {
   }
 
   _createNewFilesPage(path, files, pageTitle) {
+    firebase.Analytics.logEvent('new_folder_opened', {screen: 'filesScreen'});
     let newFilesPage = new Page({
       title: pageTitle || path
     });
@@ -158,6 +162,7 @@ class FilesPage extends Page {
               ]
             }).on('select', (eventObject) => {
               if (eventObject.index === 0) {
+                firebase.Analytics.logEvent('file_deleted', {screen: 'filesScreen'});
                 this._progessBar = new IndeterminateProgressBar({
                   left: 0,
                   right: 0,
@@ -191,6 +196,7 @@ class FilesPage extends Page {
     }).on('select', ({index}) => {
       this._onSelectFile(files[index]);
     }).on('refresh', (eventObject) => {
+      firebase.Analytics.logEvent('filespage_refreshed', {screen: 'filesScreen'});
       getFiles(path).then((newFiles) => {
         //TODO: Check which files changed.
         eventObject.target.remove(0, files.length);
@@ -224,13 +230,22 @@ class FilesPage extends Page {
   }
 
   _onSelectFile(file) {
+    firebase.Analytics.logEvent('file_opened', {screen: 'filesScreen'});
     this._progessBar = new IndeterminateProgressBar({left: 0, right: 0, top: 0, height: 4}).appendTo(this._activePage);
     if (file.dir) {
       getFiles(file.path).then((files) => {
         this._createNewFilesPage(file.path, files, file.name);
       });
-      //}else if(file.img){
-      // custom handler for images?
+    } else if ((file.img && getSetting('showImageDirectly')) || ((!file.img && !file.dir) && getSetting('openFileOnDownload'))) {
+      downloadFile(file).then(({name, entry}) => {
+        this._progessBar.dispose();
+        window.cordova.plugins.FileOpener.canOpenFile(
+          decodeURIComponent(entry.toURL()),
+          () => {
+            openFile(entry);
+          }
+        );
+      });
     } else {
       downloadFile(file).then(({name, entry}) => {
         this._progessBar.dispose();
@@ -256,6 +271,7 @@ class FilesPage extends Page {
   }
 
   _uploadFile(path) {
+    firebase.Analytics.logEvent('file_upload', {screen: 'filesScreen'});
     window.OurCodeWorld.Filebrowser.filePicker.single({
       success: function (data) {
         // Array with the file path
