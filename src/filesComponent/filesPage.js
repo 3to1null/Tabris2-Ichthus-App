@@ -106,6 +106,7 @@ class FilesPage extends Page {
         top: 0, left: 0, right: 0, bottom: 0,
         itemCount: files.length,
         highlightOnTouch: true,
+        refreshEnabled: true,
         createCell: () => {
           let cellContainer;
           if(device.version >= 23){
@@ -153,6 +154,14 @@ class FilesPage extends Page {
         }
       }).on('select', ({index}) => {
           this._onSelectFile(files[index])
+      }).on('refresh', (eventObject) =>{
+        getFiles(path).then((newFiles) => {
+          //TODO: Check which files changed.
+          eventObject.target.remove(0, files.length);
+          eventObject.target.insert(0, newFiles.length);
+          files = newFiles;
+          eventObject.target.refreshIndicator = false;
+        })
       }).appendTo(page)
   }
 
