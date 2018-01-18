@@ -238,6 +238,7 @@ class FilesPage extends Page {
       });
     } else if ((file.img && getSetting('showImageDirectly')) || ((!file.img && !file.dir) && getSetting('openFileOnDownload'))) {
       downloadFile(file).then(({name, entry}) => {
+        showToast(`${file.name} is gedownload. Locatie: ${entry.toURL()}`, 5000);
         this._progessBar.dispose();
         window.cordova.plugins.FileOpener.canOpenFile(
           decodeURIComponent(entry.toURL()),
@@ -248,6 +249,7 @@ class FilesPage extends Page {
       });
     } else {
       downloadFile(file).then(({name, entry}) => {
+        showToast(`${file.name} is gedownload. Locatie: ${entry.toURL()}`, 5000);
         this._progessBar.dispose();
         window.cordova.plugins.FileOpener.canOpenFile(
           decodeURIComponent(entry.toURL()),
