@@ -36,6 +36,37 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369737095881:android:856b2f903c0172e5",
+        "android_client_info": {
+          "package_name": "nathan.fraignt.me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369737095881-1dqmp07b0m70hv0fqhmpmv78oh415tts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLbg5DIa45NFUQGpZG9IaprV41Ej2KBaE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"
