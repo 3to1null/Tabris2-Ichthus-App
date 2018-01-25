@@ -68,7 +68,6 @@ class FilesPage extends Page {
         }
       }
 
-      // TODO: add callback, so the folder actually gets created
       navigator.notification.prompt(
         'Hoe moet de map genoemd worden?',
         onButtonPress,
