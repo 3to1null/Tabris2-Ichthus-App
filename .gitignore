@@ -2,9 +2,8 @@ node_modules/
 build/
 .idea/
 *.sqlite3
-*.xml
 .idea/workspace.xml
 localStorageKeys.txt
-.idea/workspace.xml
-.idea/workspace.xml
 keys/
+cordova/google-services.json
+cordova/_debug_google-services.json

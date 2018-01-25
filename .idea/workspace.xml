@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="650f0975-a378-4b43-a65c-01890a7e6541" name="Default" comment="Added custom materialInput widget">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/filesComponent/filesPage.js" afterPath="$PROJECT_DIR$/src/filesComponent/filesPage.js" />
+    <list default="true" id="650f0975-a378-4b43-a65c-01890a7e6541" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/Tabris2-Ichthus-App.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cordova/google-services.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cordova/config.xml" afterPath="$PROJECT_DIR$/cordova/config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" afterPath="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" afterPath="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
     </list>
     <ignored path="Tabris2-Ichthus-App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,14 +28,24 @@
     <favorites_list name="Tabris2-Ichthus-App" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5074728">
+    <splitter split-orientation="horizontal" split-proportion="0.61035424">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="roosterPage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-714">
-                  <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+                <state relative-caret-position="5933">
+                  <caret line="349" column="41" lean-forward="false" selection-start-line="349" selection-start-column="41" selection-end-line="349" selection-end-column="41" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="appointmentDetailsPage.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="17">
+                  <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
@@ -43,81 +61,71 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="filesPage.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/filesComponent/filesPage.js">
+          <file leaf-file-name="createCalendarItemPage.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/calendarComponent/createCalendarItemPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="298">
-                  <caret line="58" column="69" lean-forward="false" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
+                <state relative-caret-position="3536">
+                  <caret line="208" column="34" lean-forward="false" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="getCijfers.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/cijferComponent/getCijfers.js">
+          <file leaf-file-name="BuildProduction.sh" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/BuildProduction.sh">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+                <state relative-caret-position="119">
+                  <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="getSchedule.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/roosterComponent/getSchedule.js">
+          <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/cordova/config.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="88">
-                  <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+                <state relative-caret-position="17">
+                  <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="downloadFile.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/filesComponent/downloadFile.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="toBoolean.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/globalFunctions/toBoolean.js">
+          <file leaf-file-name="google-services.json" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/cordova/google-services.json">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="0">
-                  <caret line="0" column="52" lean-forward="false" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="52" />
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cijferPage.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
+          <file leaf-file-name="buildAndPush.sh" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/buildAndPush.sh">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="139" column="51" lean-forward="false" selection-start-line="139" selection-start-column="51" selection-end-line="144" selection-end-column="11" />
+                <state relative-caret-position="238">
+                  <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="cijferDetailsPage.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js">
+          <file leaf-file-name="filesPage.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/filesComponent/filesPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="66" column="49" lean-forward="false" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
+                <state relative-caret-position="4267">
+                  <caret line="251" column="79" lean-forward="false" selection-start-line="251" selection-start-column="79" selection-end-line="251" selection-end-column="79" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="uploadFile.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/filesComponent/uploadFile.js">
+          <file leaf-file-name="loginPage.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/build/cordova/www/app/src/loginComponent/loginPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="29" column="8" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+                <state relative-caret-position="1513">
+                  <caret line="89" column="62" lean-forward="false" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
                   <folding />
                 </state>
               </provider>
@@ -126,22 +134,42 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="globalSettings.json" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/appSettings/globalSettings.json">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+                <state relative-caret-position="0">
+                  <caret line="69" column="34" lean-forward="false" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="getFiles.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Request.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/globalFunctions/Request.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="getFiles.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/filesComponent/getFiles.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+                <state relative-caret-position="204">
+                  <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -160,8 +188,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>this.proposals =</find>
-      <find>toast</find>
       <find>_cell</find>
       <find>_cel</find>
       <find>console.log</find>
@@ -190,6 +216,8 @@
       <find>req</find>
       <find>getF</find>
       <find>console.l</find>
+      <find>delete</find>
+      <find>actionshe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -203,8 +231,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/widgets/indeterminateProgressBar.js" />
-        <option value="$PROJECT_DIR$/src/widgets/IndeterminateProgressBar.js" />
         <option value="$PROJECT_DIR$/cordova/theme.xml" />
         <option value="$PROJECT_DIR$/cordova/copyAndroidRes.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/PostRequest.js" />
@@ -214,13 +240,11 @@
         <option value="$PROJECT_DIR$/src/appSettings/colors.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/getWeekNumber.js" />
         <option value="$PROJECT_DIR$/src/roosterComponent/cellContainer.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/appSettings/subjects.json" />
         <option value="$PROJECT_DIR$/src/globalFunctions/createDrawer.js" />
         <option value="$PROJECT_DIR$/localStorageKeys.txt" />
         <option value="$PROJECT_DIR$/src/widgets/Toast.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/appointmentCellBackgroundGenerator.js" />
         <option value="$PROJECT_DIR$/src/agendaComponent/getAgenda.js" />
         <option value="$PROJECT_DIR$/src/agendaComponent/agendaPage.js" />
@@ -238,22 +262,26 @@
         <option value="$PROJECT_DIR$/src/filesComponent/getFiles.js" />
         <option value="$PROJECT_DIR$/src/filesComponent/downloadFile.js" />
         <option value="$PROJECT_DIR$/src/filesComponent/openFile.js" />
-        <option value="$PROJECT_DIR$/cordova/config.xml" />
         <option value="$PROJECT_DIR$/src/filesComponent/uploadFile.js" />
-        <option value="$PROJECT_DIR$/src/globalFunctions/Request.js" />
         <option value="$PROJECT_DIR$/src/appDrawer.js" />
         <option value="$PROJECT_DIR$/buildAndPush.sh" />
         <option value="$PROJECT_DIR$/src/widgets/FlatButton.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/toBoolean.js" />
         <option value="$PROJECT_DIR$/src/settingsComponent/settingsPage.js" />
         <option value="$PROJECT_DIR$/src/globalFunctions/getSetting.js" />
-        <option value="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
-        <option value="$PROJECT_DIR$/src/appSettings/globalSettings.json" />
         <option value="$PROJECT_DIR$/src/cijferComponent/cijferPage.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js" />
         <option value="$PROJECT_DIR$/src/cijferComponent/getCijfers.js" />
         <option value="$PROJECT_DIR$/src/roosterComponent/getSchedule.js" />
+        <option value="$PROJECT_DIR$/src/appSettings/globalSettings.json" />
         <option value="$PROJECT_DIR$/src/filesComponent/filesPage.js" />
+        <option value="$PROJECT_DIR$/src/globalFunctions/Request.js" />
+        <option value="$PROJECT_DIR$/build/cordova/www/app/src/loginComponent/loginPage.js" />
+        <option value="$PROJECT_DIR$/BuildProduction.sh" />
+        <option value="$PROJECT_DIR$/cordova/config.xml" />
+        <option value="$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js" />
+        <option value="$PROJECT_DIR$/src/roosterComponent/roosterPage.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -294,12 +322,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
               <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
@@ -315,63 +349,20 @@
               <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
               <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="appSettings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="calendarComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="cijferComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="filesComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="globalFunctions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="roosterComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="settingsComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Tabris2-Ichthus-App" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tabris2-Ichthus-App" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Folders/School/informatica/V4 - Website/website" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="286" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="304" />
@@ -404,12 +395,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\keys" />
       <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\src\img" />
       <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\src\img" />
       <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\cordova" />
+      <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\src\img" />
       <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\src" />
       <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\cordova\res\android\values" />
       <recent name="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\src\widgets" />
@@ -427,7 +419,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Bash.BuildAndPush">
+  <component name="RunManager" selected="npm.Tabris2-Ichthus-App">
     <configuration name="BuildAndPush" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="INTERPRETER_PATH" value="C:\Program Files\Git\bin\sh.exe" />
@@ -436,6 +428,16 @@
       <option name="SCRIPT_NAME" value="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App\buildAndPush.sh" />
       <option name="PARAMETERS" value="" />
       <module name="" />
+      <envs />
+    </configuration>
+    <configuration name="BuildProduction.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="C:\Program Files\Git\bin\sh.exe" />
+      <option name="WORKING_DIRECTORY" value="D:\Nathan\desktop\projects\android\Tabris2-Ichthus-App" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BuildProduction.sh" />
+      <option name="PARAMETERS" value="" />
+      <module name="Tabris2-Ichthus-App" />
       <envs />
     </configuration>
     <configuration name="Tabris2-Ichthus-App" type="js.build_tools.npm" factoryName="npm">
@@ -506,10 +508,16 @@
       <envs />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Bash.BuildAndPush" />
       <item index="1" class="java.lang.String" itemvalue="npm.Tabris2-Ichthus-App" />
+      <item index="2" class="java.lang.String" itemvalue="Bash.BuildProduction.sh" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Bash.BuildProduction.sh" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -615,6 +623,11 @@
       <workItem from="1515944524838" duration="7104000" />
       <workItem from="1516025008662" duration="7385000" />
       <workItem from="1516193727043" duration="7423000" />
+      <workItem from="1516484394739" duration="1775000" />
+      <workItem from="1516564127893" duration="2224000" />
+      <workItem from="1516568283339" duration="441000" />
+      <workItem from="1516627719507" duration="2232000" />
+      <workItem from="1516892559642" duration="217000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1497886535188</created>
@@ -630,12 +643,33 @@
       <option name="project" value="LOCAL" />
       <updated>1497985302878</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added delete function &amp; fixed formatting.">
+      <created>1516303013315</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1516303013317</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added analytics and setting to filesPage">
+      <created>1516303877301</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1516303877301</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added toast showing file is downloaded with download location.">
+      <created>1516304241069</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1516304241069</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="enabled" value="true" />
-    <option name="totallyTimeSpent" value="290009000" />
+    <option name="totallyTimeSpent" value="301449000" />
     <option name="suspendDelayInSeconds" value="300" />
     <option name="showClosedTasks" value="false" />
     <option name="showSpentTimeFromLastPost" value="true" />
@@ -652,25 +686,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2153518" sideWeight="0.49406528" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1641791" sideWeight="0.49406528" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.48720682" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5085197" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.48614073" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5138593" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.48400852" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.51599145" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Time Tracking" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942432" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5127932" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5127932" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27452025" sideWeight="0.5059347" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.4914803" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.49573562" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.49573562" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -749,7 +785,11 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Added custom materialInput widget" />
     <MESSAGE value="Added colors.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added colors.js" />
+    <MESSAGE value="Added delete function &amp; fixed formatting." />
+    <MESSAGE value="Added analytics and setting to filesPage" />
+    <MESSAGE value="Added toast showing file is downloaded with download location." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added toast showing file is downloaded with download location." />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -758,27 +798,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/widgets/Toast.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.eslintrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cordova/google-services.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/img/14597446_1147661318636048_4179166001218191360_n.jpg" />
     <entry file="file://$PROJECT_DIR$/src/img/download.jpg" />
     <entry file="file://$PROJECT_DIR$/src/img/download (1).jpg" />
@@ -794,13 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="9" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -895,13 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/widgets/MaterialInput.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -937,40 +942,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/globalFunctions/Request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/calendarComponent/createCalendarItemPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="208" column="34" lean-forward="false" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/loginComponent/loginPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cordova/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="130" lean-forward="false" selection-start-line="36" selection-start-column="130" selection-end-line="36" selection-end-column="130" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/filesComponent/downloadFile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -978,7 +953,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="52" lean-forward="false" selection-start-line="0" selection-start-column="52" selection-end-line="0" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -986,7 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="66" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -994,7 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1513">
           <caret line="89" column="68" lean-forward="false" selection-start-line="89" selection-start-column="68" selection-end-line="89" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,15 +974,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildAndPush.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="64" lean-forward="false" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1018,14 +981,126 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="84" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="49" lean-forward="false" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/filesComponent/uploadFile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="8" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/filesComponent/getFiles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cijferComponent/getCijfers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/roosterComponent/getSchedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/appSettings/globalSettings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="69" column="34" lean-forward="false" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/filesComponent/openFile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/loginComponent/loginPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="4" lean-forward="false" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/cordova/www/app/src/loginComponent/loginPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="89" column="62" lean-forward="false" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/filesComponent/filesPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4267">
+          <caret line="251" column="79" lean-forward="false" selection-start-line="251" selection-start-column="79" selection-end-line="251" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buildAndPush.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cordova/google-services.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildProduction.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="35" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cordova/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/calendarComponent/createCalendarItemPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3536">
+          <caret line="208" column="34" lean-forward="false" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1038,74 +1113,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/appSettings/globalSettings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="139" column="51" lean-forward="false" selection-start-line="139" selection-start-column="51" selection-end-line="144" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cijferComponent/cijferDetailsPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="66" column="49" lean-forward="false" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/filesComponent/uploadFile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="8" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/roosterComponent/getSchedule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="37" column="29" lean-forward="false" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cijferComponent/getCijfers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/roosterComponent/roosterPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        <state relative-caret-position="5933">
+          <caret line="349" column="41" lean-forward="false" selection-start-line="349" selection-start-column="41" selection-end-line="349" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/filesComponent/getFiles.js">
+    <entry file="file://$PROJECT_DIR$/src/roosterComponent/appointmentDetailsPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        <state relative-caret-position="17">
+          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/filesComponent/filesPage.js">
+    <entry file="file://$PROJECT_DIR$/src/globalFunctions/Request.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="58" column="69" lean-forward="false" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
+        <state relative-caret-position="51">
+          <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
