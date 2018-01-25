@@ -45,11 +45,10 @@ class FilesPage extends Page {
   }
 
   _createActions(path) {
-    //TODO: update images to higher res.
     new Action({
       id: 'actionCreateFolder',
       title: 'Nieuwe map',
-      image: 'src/img/ic_create_new_folder_white.png'
+      image: 'src/img/ic_create_new_folder_white_36dp.png'
     }).on('select', () => {
       let outerScope = this;
 
@@ -82,7 +81,7 @@ class FilesPage extends Page {
     new Action({
       id: 'actionUploadFile',
       title: 'Upload bestand',
-      image: 'src/img/ic_file_upload_white.png'
+      image: 'src/img/ic_cloud_upload_white_36dp.png'
     }).on('select', () => {
       this._uploadFile(path);
     }).appendTo(this.parent());

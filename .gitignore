@@ -7,3 +7,5 @@ localStorageKeys.txt
 keys/
 cordova/google-services.json
 cordova/_debug_google-services.json
+.idea/workspace.xml
+*.iml
