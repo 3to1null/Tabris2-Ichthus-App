@@ -18,6 +18,7 @@ class appointmentDetailsPage extends Page{
       this._rootNavigationView.set('toolbarVisible', true);
     });
     this._generateInfo();
+    console.log(appointment, index)
   }
 
   _generateUI(){

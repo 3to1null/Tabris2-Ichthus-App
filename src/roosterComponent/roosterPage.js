@@ -1,8 +1,6 @@
 /**
  * Created by Nathan on 25-6-2017.
  */
-//TODO: add settings for cellContainer (show klas, teacher)
-//TODO: add settings for collectionView (show days)
 const {Tab, Page, ui, Button, Composite, TextView, TabFolder, CollectionView, SearchAction, Action} = require('tabris');
 const MaterialInput = require('../widgets/MaterialInput');
 const BigToolbar = require('../widgets/BigToolbar');
@@ -13,7 +11,7 @@ const getSchedule = require('./getSchedule');
 const getWeekNumber = require('../globalFunctions/getWeekNumber');
 const Request = require('../globalFunctions/Request');
 const showToast = require('../globalFunctions/showToast');
-// const appointmentDetailsPage = require('./appointmentDetailsPage');
+//const appointmentDetailsPage = require('./appointmentDetailsPage');
 const cellBackgroundGenerator = require('../globalFunctions/appointmentCellBackgroundGenerator');
 const getSetting = require('../globalFunctions/getSetting');
 
@@ -347,9 +345,9 @@ class RoosterPage extends Page {
       }
     }).on('select', ({index}) => {
       //TODO: add appointmentDetailsPage
-      // if(appointments[index] !== false) {
+      //if(appointments[index] !== false) {
       //   appointmentDetailsPage(index, appointments[index], this._rootNavigationView);
-      // }
+      //}
 
     }).appendTo(this.tabFolder.find(`#weekTab${weekIndex}`));
   }
