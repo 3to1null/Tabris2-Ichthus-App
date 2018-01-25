@@ -113,6 +113,7 @@ class FilesPage extends Page {
     }
     let fileCollectionView = new CollectionView({
       top: 0, left: 0, right: 0, bottom: 0,
+      id: 'fileCollectionView',
       itemCount: files.length,
       highlightOnTouch: true,
       refreshEnabled: true,
@@ -219,7 +220,8 @@ class FilesPage extends Page {
       new Request('files/mkdir', {path: path, dirName: name}).post().then((response) => {
         response.json().then((json) => {
           //TODO: Error handling
-          //TODO: Force refresh
+          //this._activePage is here still the "old" page.
+          this._activePage.find('#fileCollectionView').trigger('refresh');
           let newDirPath = `${path}${name}/`;
           resolve(json.files, newDirPath, name);
         });

@@ -132,14 +132,12 @@ class SettingsPage extends Page {
       'confirmLogout': ({index}) => {
         //Uitloggen selected
         if(index === 1){
-          //TODO: create global logout function
           localStorage.clear();
           app.reload()
         }
       },
       'deleteAllDownloadedFiles': ({index}) => {
         if(index === 1){
-          //TODO create global file delete function
           window.resolveLocalFileSystemURL(
             cordova.file.externalRootDirectory,
             function(entry){
