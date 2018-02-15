@@ -5,14 +5,15 @@
     "type": "header"
   },
   {
-    "storageKey": "-s-showDaysAboveSchedule",
-    "name": "showDaysAboveSchedule",
-    "desc": "Laat dagnamen zien",
+    "storageKey": "-s-showDatesAboveSchedule",
+    "name": "showDatesAboveSchedule",
+    "desc": "Laat datums in plaats van dagnamen zien",
     "isHeader": false,
     "default": true,
     "type": "boolSwitch",
     "toastOnChange": "Verandering is zichtbaar na het laden van een nieuw rooster."
   },
+
   {
     "storageKey": "-s-showLeraar",
     "name": "showLeraar",
