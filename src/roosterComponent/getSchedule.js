@@ -17,10 +17,12 @@ module.exports = function getSchedule(userCode="~me") {
         requestTimeout = 2500;
         showOldScheduleToast = true;
         oldScheduleToastMessage = 'Dit rooster is ouder dan een dag, lessen zouden in tussentijd veranderd kunnen zijn.'
+      } else if(timePassedSinceLastSchedule > 3 * 60 * 60){
+        requestTimeout = 2000;
       } else if(timePassedSinceLastSchedule > 60 * 60){
-        requestTimeout = 1500;
+        requestTimeout = 1200;
       } else{
-        requestTimeout = 1000;
+        requestTimeout = 1;
       }
       setTimeout(() => {
         if(localStorage.getItem(`lastScheduleGetTime${userCode}`) === undefined || localStorage.getItem(`lastScheduleGetTime${userCode}`) === null){
