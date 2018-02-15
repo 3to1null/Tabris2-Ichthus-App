@@ -131,17 +131,31 @@ class RoosterPage extends Page {
 
   _parseSearchResult(name) {
     let userObject = this.proposals.find(user => user.name === name);
-    let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
-    if(offlineProposalsObjects === null){offlineProposalsObjects = []}
-    if(userObject !== undefined){
+    if (userObject !== undefined){
+      let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
+      if(offlineProposalsObjects === null){offlineProposalsObjects = []}
       this.searchAction.text = "";
       if(!offlineProposalsObjects.map(object => object.name).includes(userObject.name)){
         offlineProposalsObjects.unshift(userObject);
       }
       this._renderNextSchedule(userObject);
       localStorage.setItem('offlineProposalsObjects', JSON.stringify(offlineProposalsObjects));
+    }else{
+      //User didn't click on a name but used enter button, so show the search results.
+      this._searchResultContainer().then((user) => {console.log(user)})
     }
   }
+
+  //returns a promise that resolves a name.
+  _searchResultContainer(){
+    return new Promise((resolve, reject) => {
+      new Composite({
+        left: 0, right: 0, height: 200, top: 0
+      }).appendTo(this)
+
+    })
+  }
+
 
   //gets new proposals on input in searchbar.
   _getProposals(searchQuery) {
@@ -152,7 +166,6 @@ class RoosterPage extends Page {
           this.searchAction.proposals = json.map(proposal => proposal.name);
         })
       }), (error) => {
-        console.log(error);
         let offlineProposalsObjects = JSON.parse(localStorage.getItem('offlineProposalsObjects'));
         let offlineProposals = offlineProposalsObjects.map(proposal => proposal.name);
         this.proposals = offlineProposalsObjects;
@@ -242,7 +255,7 @@ class RoosterPage extends Page {
         tabTitle = 'Volgende week';
       }
       else {
-        tabTitle = `Week ${firstWeekNumber + weekIndex}`;
+        tabTitle = `Week ${firstWeekNumber + weekIndex - 1}`;
       }
       let tmp_tab = new Tab({
         title: tabTitle,
@@ -282,28 +295,56 @@ class RoosterPage extends Page {
   }
 
   _renderSchedule(appointments, weekIndex) {
-    const scheduleCollectionTopMargin = Boolean(getSetting('showDaysAboveSchedule')) ? 20 : 0;
-    if(getSetting('showDaysAboveSchedule')){
-      let days = ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag'];
-      new CollectionView({
-        top: 0, left: 0, right: 0, height: scheduleCollectionTopMargin,
-        columnCount: 5,
-        itemCount: 5,
-        createCell: () => {
-          let cell = new Composite({
-            background: colors.UI_bg
-          });
-          new TextView({
-            centerY: 0, centerX: 0,
-            textColor: colors.white_light_bg
-          }).appendTo(cell);
-          return cell
-        },
-        updateCell: (cell, index) => {
-          cell.children()[0].text = days[index]
-        }
-      }).appendTo(this.tabFolder.find(`#weekTab${weekIndex}`))
+    const scheduleCollectionTopMargin = 20;
+    let aboveScheduleTextList = ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag'];
+    if(getSetting('showDatesAboveSchedule')) {
+
+      const months = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
+      const days = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
+
+
+      function getMonday(d) {
+        d = new Date(d);
+        let day = d.getDay(),
+          diff = d.getDate() - day + (day === 0 ? -6:1); // adjust when day is sunday
+        return new Date(d.setDate(diff));
+      }
+      //offset is in days
+      function getPrettyDate(date, offset) {
+        date.setDate(date.getDate() + offset);
+        let month = months[date.getMonth()];
+        let day = days[date.getDay() - 1];
+        return `${day.substring(0, 2)} ${date.getDate()} ${month.substring(0,3)}`
+      }
+
+      let today = new Date();
+      today.setDate(today.getDate() + (weekIndex === 0 ? -7 : (weekIndex - 1) * 7));
+      let mondayOfWeek = getMonday(today);
+      aboveScheduleTextList = [];
+
+      //x = 0 => monday, x = 1 => tuesday, etc.
+      for(let x = 0; x < 5; x++){
+        aboveScheduleTextList.push(getPrettyDate(mondayOfWeek, 1))
+      }
     }
+    new CollectionView({
+      top: 0, left: 0, right: 0, height: scheduleCollectionTopMargin,
+      columnCount: 5,
+      itemCount: 5,
+      createCell: () => {
+        let cell = new Composite({
+          background: colors.UI_bg
+        });
+        new TextView({
+          centerY: 0, centerX: 0,
+          textColor: colors.white_light_bg
+        }).appendTo(cell);
+        return cell;
+      },
+      updateCell: (cell, index) => {
+        cell.children()[0].text = aboveScheduleTextList[index];
+      }
+    }).appendTo(this.tabFolder.find(`#weekTab${weekIndex}`));
     this._scheduleCollectionList[String(weekIndex)] = new CollectionView({
       top: scheduleCollectionTopMargin - 1, left: 0, right: 0, bottom: 0,
       class: 'scheduleCollection',
